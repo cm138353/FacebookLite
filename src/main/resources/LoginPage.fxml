@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="244.0" layoutY="47.0" text="FacebookLite" textAlignment="CENTER" textFill="#244cb9">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="email" layoutX="315.0" layoutY="151.0" />
+      <Label layoutX="236.0" layoutY="154.0" text="Email:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="239.0" layoutY="197.0" text="Password:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="register" layoutX="261.0" layoutY="236.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Register" />
+      <Button fx:id="logIn" layoutX="383.0" layoutY="236.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Log In" />
+      <Button fx:id="resetPassword" layoutX="291.0" layoutY="316.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Reset Password" />
+      <PasswordField fx:id="password" layoutX="315.0" layoutY="195.0" />
+   </children>
+</AnchorPane>

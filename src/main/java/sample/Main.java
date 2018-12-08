@@ -2,9 +2,6 @@ package sample;
 
 import collections.Profile;
 import collections.User;
-import collections.Wall;
-import com.mongodb.Block;
-import com.mongodb.DB;
 import com.mongodb.client.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.bson.Document;
 
-import java.util.List;
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -25,6 +22,12 @@ public class Main extends Application {
 
     private User user;
     private Profile profile;
+    private static Stage primaryStage;
+    public static Scene login;
+    public static Scene forgotPass;
+    public static Scene dashboard;
+    public static Scene registerAcc;
+    public static Scene resetPass;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -34,9 +37,11 @@ public class Main extends Application {
         profiles = people.getCollection("profiles");
         users = people.getCollection("users");
 
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root));
+        loadPages();
+
+        primaryStage.setTitle("FacebookLite");
+        primaryStage.setScene(login);
+        this.primaryStage = primaryStage;
 
 
 
@@ -67,8 +72,36 @@ public class Main extends Application {
 
 
         primaryStage.show();
+
+
     }
 
+    public static Stage getPrimaryStage(){
+        return primaryStage;
+    }
+
+    public static Scene getForgotPage(){
+        return forgotPass;
+    }
+
+    public static Scene getRegPage(){
+        return registerAcc;
+    }
+
+    public static Scene getLoginPage(){
+        return login;
+    }
+
+    public static Scene getResetPassPage(){
+        return resetPass;
+    }
+
+    private void loadPages() throws IOException {
+        login = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("LoginPage.fxml")));
+        forgotPass = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("ForgotPassword.fxml")));
+        registerAcc = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("RegisterPage.fxml")));
+        resetPass = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("ResetPassword.fxml")));
+    }
 
     public static void main(String[] args) {
         launch(args);
