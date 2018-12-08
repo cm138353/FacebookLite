@@ -5,7 +5,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -28,8 +27,14 @@ public class ForgotController {
     private Button cancel;
 
     @FXML
-    void initialize() {
+    void initialize()
+    {
         addListeners();
+    }
+
+    public void clear(){
+        email.setText(null);
+        DOB.setValue(null);
     }
 
     private static String tEmail;
@@ -43,6 +48,7 @@ public class ForgotController {
         });
         cancel.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
+                clear();
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });
@@ -54,6 +60,7 @@ public class ForgotController {
                 System.out.println(tEmail + " " + tDOB);
                 //if email and DOB is in database
                     //go to next page
+                    clear();
                     Main.getPrimaryStage().setScene(Main.getResetPassPage());
                 //else
                     //print error message

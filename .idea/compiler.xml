@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="FacebookLite" target="1.5" />
+      <module name="FacebookLite" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

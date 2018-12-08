@@ -1,18 +1,17 @@
 package Controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Main;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class LoginController {
 
@@ -45,6 +44,11 @@ public class LoginController {
     private String text1;
     private String text2;
 
+    public void clear(){
+        email.setText(null);
+        password.setText(null);
+    }
+
     private void addListeners(){
         email.textProperty().addListener(new ChangeListener<String>() {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -58,6 +62,7 @@ public class LoginController {
         });
         logIn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
+                clear();
                 //todo
             }
         });
@@ -67,12 +72,14 @@ public class LoginController {
                 //get values from email and password and pass to database
                 //if email and password are in database{
                     //change scene to dashboard
+                    clear();
                     Main.getPrimaryStage().setScene(Main.getForgotPage());
                 //}else{ print error }
             }
         });
         register.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
+                clear();
                 Main.getPrimaryStage().setScene(Main.getRegPage());
             }
         });

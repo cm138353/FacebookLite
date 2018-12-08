@@ -44,6 +44,14 @@ public class RegisterController {
         addListeners();
     }
 
+    public void clear(){
+        firstName.setText(null);
+        lastName.setText(null);
+        email.setText(null);
+        password.setText(null);
+        DOB.setValue(null);
+    }
+
     private void addListeners(){
         cancel.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -63,6 +71,7 @@ public class RegisterController {
                 String gen = gender.getValue();
                 System.out.println(tDOB + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
                 //back to login page to sign in
+                clear();
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });

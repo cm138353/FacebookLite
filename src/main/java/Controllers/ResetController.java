@@ -23,6 +23,10 @@ public class ResetController {
         addListeners();
     }
 
+    private void clear(){
+        newPassword.setText(null);
+    }
+
     private void addListeners(){
         confirm.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -32,11 +36,13 @@ public class ResetController {
                 System.out.println(email + " " + nPassword);
                 // db.users.find(email).setPass(nPassword)
                 //go back to login page
+                clear();
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });
         cancel.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
+                clear();
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });
