@@ -1,7 +1,7 @@
 package sample;
 
-import collections.Profile;
-import collections.User;
+import Classes.Profile;
+import Classes.User;
 import com.mongodb.client.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

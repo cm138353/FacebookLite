@@ -1,18 +1,18 @@
-package collections;
+package Classes;
 
 public class User
 {
-    private String username;
+    private String email;
     private String password;
 
-    public void setUsername(String username){
+    public void setEmail(String username){
 
-        this.username = username;
+        this.email = username;
     }
 
-    public String getUsername(){
+    public String getEmail(){
 
-        return username;
+        return email;
     }
 
     public void setPassword(String password){
