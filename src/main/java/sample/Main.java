@@ -2,6 +2,7 @@ package sample;
 
 import Classes.Profile;
 import Classes.User;
+import com.mongodb.client.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

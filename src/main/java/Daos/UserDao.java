@@ -10,7 +10,6 @@ import sample.DbManager;
 
 import java.util.List;
 
-import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 
 public class UserDao implements Dao<User> {
@@ -35,13 +34,18 @@ public class UserDao implements Dao<User> {
         Document userDoc = new Document();
         userDoc.put("email", user.getEmail());
         userDoc.put("password", user.getPassword());
-
-
+        usersCollection.insertOne(userDoc);
     }
 
     @Override
     public void update(User user, String[] params) {
+        usersCollection.updateOne(
+                eq("email", user.getEmail()),
+                new Document("$set", new Document("email", params[0])));
 
+        usersCollection.updateOne(
+                eq("email", user.getEmail()),
+                new Document("$set", new Document("password", params[1])));
     }
 
     @Override
