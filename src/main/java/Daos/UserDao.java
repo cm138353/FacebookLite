@@ -1,16 +1,13 @@
 package Daos;
 
 
-import collections.User;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoCredential;
+import Classes.User;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import Interface.Dao;
 import org.bson.Document;
 import sample.DbManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.and;

@@ -1,4 +1,4 @@
-package collections;
+package Classes;
 
 public class User
 {

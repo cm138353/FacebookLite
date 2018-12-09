@@ -1,4 +1,4 @@
-package collections;
+package Classes;
 
 //import sample.IDisplay;
 //import sample.Stack;
