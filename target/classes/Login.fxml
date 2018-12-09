@@ -53,11 +53,11 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="276.0" layoutY="238.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Sign-In" />
-            <TextField layoutX="246.0" layoutY="175.0" />
-            <TextField layoutX="246.0" layoutY="120.0" />
-            <Label layoutX="179.0" layoutY="182.0" text="Password" />
-            <Label layoutX="179.0" layoutY="124.0" text="Username" />
+            <Button fx:id="Sign-InButton" layoutX="276.0" layoutY="238.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Sign-In" />
+            <TextField fx:id="PasswordTextField" layoutX="246.0" layoutY="175.0" />
+            <TextField fx:id="UsernameTextField" layoutX="246.0" layoutY="120.0" />
+            <Label fx:id="PasswordLabel" layoutX="179.0" layoutY="182.0" text="Password" />
+            <Label fx:id="UsernameLabel" layoutX="179.0" layoutY="124.0" text="Username" />
       </children>
     </AnchorPane>
   </children>
