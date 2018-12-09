@@ -50,6 +50,7 @@ public class UserDao implements Dao<User> {
 
     @Override
     public void delete(User user) {
+        usersCollection.deleteOne(eq("email",user.getEmail()));
 
     }
 }

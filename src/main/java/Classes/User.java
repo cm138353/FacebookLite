@@ -5,9 +5,9 @@ public class User
     private String email;
     private String password;
 
-    public void setEmail(String username){
+    public void setEmail(String email){
 
-        this.email = username;
+        this.email = email;
     }
 
     public String getEmail(){

@@ -8,17 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.bson.Document;
 
 import java.io.IOException;
 
 public class Main extends Application {
-
-    private MongoClient mongoClient;
-    private MongoDatabase people;
-    private MongoDatabase wall;
-    private MongoCollection<Document> profiles;
-    private MongoCollection<Document> users;
 
     private User user;
     private Profile profile;
@@ -31,44 +24,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        mongoClient =  MongoClients.create();
-        people = mongoClient.getDatabase("people");
-        wall = mongoClient.getDatabase("wall");
-        profiles = people.getCollection("profiles");
-        users = people.getCollection("users");
+
 
         loadPages();
 
         primaryStage.setTitle("FacebookLite");
         primaryStage.setScene(login);
         this.primaryStage = primaryStage;
-
-
-
-
-
-
-
-        //===========================================
-        /*
-        Block<Document> printBlock = new Block<Document>() {
-
-            public void apply(final Document document) {
-                System.out.println(document.toJson());
-            }
-        };
-        users.find().forEach(printBlock);
-        */
-        //============================================
-
-        MongoCursor<Document> cursor = users.find().iterator();
-        try {
-            while (cursor.hasNext()) {
-                System.out.println(cursor.next().toJson());
-            }
-        } finally {
-            cursor.close();
-        }
 
 
         primaryStage.show();
