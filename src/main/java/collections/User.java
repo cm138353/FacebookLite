@@ -3,7 +3,7 @@ package collections;
 public class User
 {
     private String username;
-    private char[] password;
+    private String password;
 
     public void setUsername(String username){
 
@@ -15,12 +15,12 @@ public class User
         return username;
     }
 
-    public void setPassword(char[] password){
+    public void setPassword(String password){
 
         this.password = password;
     }
 
-    public char[] getPassword(){
+    public String getPassword(){
 
         return password;
     }
