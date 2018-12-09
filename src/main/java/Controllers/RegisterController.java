@@ -1,5 +1,8 @@
 package Controllers;
 
+import Classes.User;
+import Daos.UserDao;
+import Interface.Dao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,6 +16,8 @@ import sample.Main;
 import java.time.format.DateTimeFormatter;
 
 public class RegisterController {
+
+    private static Dao userDao;
 
     @FXML
     private TextField firstName;
@@ -41,7 +46,9 @@ public class RegisterController {
 
     @FXML
     void initialize() {
+
         addListeners();
+        userDao = new UserDao();
     }
 
     public void clear(){
@@ -71,6 +78,7 @@ public class RegisterController {
                 String gen = gender.getValue();
                 System.out.println(tDOB + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
                 //back to login page to sign in
+                userDao.save(new User(mail, pass));
                 clear();
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
