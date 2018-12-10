@@ -126,6 +126,9 @@ public class RegisterController {
                     Main.getPrimaryStage().setScene(Main.getLoginPage());
                 }else {
                     //ERROR MESSAGE USER EXISTS ALREADY!!!! todo
+                    //todo
+                    //todo
+                    //todo
                     clear();
                 }
 

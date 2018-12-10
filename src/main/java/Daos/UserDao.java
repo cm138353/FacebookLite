@@ -54,8 +54,7 @@ public class UserDao implements Dao<User> {
 
     @Override
     public Document find(User user) {
-        Document doc = (Document) usersCollection.find(and(eq("email", user.getEmail()),
-                eq("password", user.getPassword()))).first();
+        Document doc = (Document) usersCollection.find(eq("email", user.getEmail())).first();
         return doc;
     }
 
@@ -71,16 +70,11 @@ public class UserDao implements Dao<User> {
     public void update(User user, String[] params) {
         usersCollection.updateOne(
                 eq("email", user.getEmail()),
-                new Document("$set", new Document("email", params[0])));
-
-        usersCollection.updateOne(
-                eq("email", user.getEmail()),
-                new Document("$set", new Document("password", params[1])));
+                new Document("$set", new Document("password", params[0])));
     }
 
     @Override
     public void delete(User user) {
         usersCollection.deleteOne(eq("email",user.getEmail()));
-
     }
 }

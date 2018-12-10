@@ -77,16 +77,13 @@ public class LoginController {
                     User user = itr.next();
                     if(user.getEmail().equals(text1) && user.getPassword().equals(text2)){
                         Main.getPrimaryStage().setScene(Main.getDashboardPage());
+                        break;
                     }
                     else {
                         //alert message: Error message("invalid email or password") todo
+
                     }
                 }
-
-                // todo
-                // auth == there is a user with credentials entered
-                // give user access
-                // todo
 
                 clear();
 
