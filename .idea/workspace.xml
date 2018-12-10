@@ -2,22 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc152084-9276-469c-b808-d77e693c30b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Classes/Posts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/DashboardController$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/RegisterController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/RegisterController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Daos/PostsDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Daos/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Daos/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Classes/Profile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Classes/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ForgotController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ForgotController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ForgotController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ForgotController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ResetController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ResetController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ResetController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Daos/ProfileDao$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Daos/ProfileDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Daos/UserDao$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Daos/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interface/Dao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sample/DbManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sample/FacebookLite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sample/Main.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,22 +42,58 @@
     <expand />
     <select />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="311956533">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="3" />
+          <entry key="server/FBDB/profiles" value="1" />
+          <entry key="server/FBDB/users" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="3" />
+          <entry key="MONGO" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Daos/PostDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="323">
+              <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/LoginController.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Daos/UserDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+            <state relative-caret-position="221">
+              <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,74 +104,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="84" column="71" lean-forward="true" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="71" />
+            <state relative-caret-position="633">
+              <caret line="84" column="71" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#740#741#0" expanded="true" />
-                <element signature="e#794#795#0" expanded="true" />
-                <element signature="e#1661#1662#0" expanded="true" />
-                <element signature="e#1713#1714#0" expanded="true" />
-                <element signature="e#2104#2105#0" expanded="true" />
-                <element signature="e#2172#2173#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="102" column="51" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1585#1586#0" expanded="true" />
-                <element signature="e#1669#1670#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/DashboardController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Classes/Post.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Classes/Profile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Daos/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
-                <element signature="e#974#975#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -166,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/main/java/interfaces/Dao.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/DbManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/collections/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Daos/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Daos/ProfileDAO.java" />
         <option value="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
@@ -181,6 +154,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/DashboardController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Daos/UserDao.java" />
       </list>
     </option>
   </component>
@@ -207,8 +181,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -290,7 +264,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544478560990" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544479873311" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.mongoOptions" />
   </component>
@@ -339,6 +313,7 @@
       <workItem from="1544318787274" duration="9088000" />
       <workItem from="1544413043004" duration="10282000" />
       <workItem from="1544468753812" duration="2032000" />
+      <workItem from="1544479294709" duration="375000" />
     </task>
     <task id="LOCAL-00001" summary="just added the delete DAO function">
       <created>1544329443077</created>
@@ -365,13 +340,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26217000" />
+    <option name="totallyTimeSpent" value="26592000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20726173" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20682302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -381,7 +356,7 @@
       <window_info id="Learn" order="7" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.25040916" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.2494577" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39770868" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -390,7 +365,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50226927" side_tool="true" weight="0.2536825" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.5188216" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.51843816" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Maven" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -400,7 +375,7 @@
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" weight="0.3292683" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Mongo Explorer" order="8" visible="true" weight="0.1716418" />
+      <window_info anchor="right" id="Mongo Explorer" order="8" visible="true" weight="0.17324094" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info anchor="right" id="Maven Projects" order="10" />
     </layout>
@@ -441,6 +416,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="just added the delete DAO function" />
@@ -495,63 +473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Classes/Profile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="84" column="71" lean-forward="true" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#740#741#0" expanded="true" />
-            <element signature="e#794#795#0" expanded="true" />
-            <element signature="e#1661#1662#0" expanded="true" />
-            <element signature="e#1713#1714#0" expanded="true" />
-            <element signature="e#2104#2105#0" expanded="true" />
-            <element signature="e#2172#2173#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#974#975#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/PostDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#284#285#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/RegisterPage.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -582,7 +503,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="1037">
           <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -590,17 +511,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Classes/Post.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/DashboardController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+        <state relative-caret-position="1615">
+          <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/DashboardController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Classes/Post.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
+        <state relative-caret-position="323">
+          <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Classes/Profile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -612,6 +543,43 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1585#1586#0" expanded="true" />
             <element signature="e#1669#1670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/PostDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="633">
+          <caret line="84" column="71" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
