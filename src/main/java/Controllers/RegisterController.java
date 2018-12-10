@@ -99,6 +99,7 @@ public class RegisterController {
                 pInfo.add(fName);
                 pInfo.add(lName);
                 pInfo.add(age);
+
                 pInfo.add(gen);
                 pInfo.add(doc.get("_id").toString());
 
