@@ -6,7 +6,7 @@ import org.bson.Document;
 
 import java.util.List;
 
-public class PostsDao implements Dao<Post> {
+public class PostDao implements Dao<Post> {
     @Override
     public List<Post> getAll() {
         return null;
@@ -20,7 +20,7 @@ public class PostsDao implements Dao<Post> {
 
     @Override
     public void save(Post post) {
-        
+
     }
 
     @Override
