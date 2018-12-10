@@ -1,6 +1,6 @@
 package Controllers;
 
-import Classes.Posts;
+import Classes.Post;
 import Classes.User;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +13,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
-import sample.Main;
 
 public class DashboardController {
 
@@ -48,7 +47,7 @@ public class DashboardController {
     private Button showHidPosts;
 
     @FXML
-    private ListView<Posts> posts;
+    private ListView<Post> posts;
 
     @FXML
     private Button addPost;
@@ -77,7 +76,7 @@ public class DashboardController {
     @FXML
     private Button openProfile;
 
-    private ListView<Posts> hiddenPosts = new ListView<>();
+    private ListView<Post> hiddenPosts = new ListView<>();
 
     private ListView<User> hiddenFriends = new ListView<>();
 
@@ -103,16 +102,16 @@ public class DashboardController {
     private void setPosts(){
         //create new posts from database and add posts to posts listview using forloop
         //add hidden posts
-        Posts post1 = new Posts("whats up dudes","12/9/2018",false);
-        Posts post2 = new Posts("hey" ,"12/9/2018",false);
+        Post post1 = new Post("whats up dudes","12/9/2018",false);
+        Post post2 = new Post("hey" ,"12/9/2018",false);
         posts.getItems().addAll(post1,post2);
         posts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         /*
-            ArrayList<Posts> postsarray = new ArrayList<Posts>();
+            ArrayList<Post> postsarray = new ArrayList<Post>();
             get all posts from database as arraylist of posts and save to postsarray
 
-            for(Posts p : postsarray){
+            for(Post p : postsarray){
                 if(!p.getHidden){
                     posts.getItems().add(p);
                 }else{
@@ -128,10 +127,10 @@ public class DashboardController {
         deletePost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList<Posts> postList;
+                ObservableList<Post> postList;
                 postList = posts.getSelectionModel().getSelectedItems();
 
-                for (Posts p: postList) {
+                for (Post p: postList) {
                     System.out.println(p.getID());
                     //remove posts from database by p.getID();
                 }
@@ -143,11 +142,11 @@ public class DashboardController {
         hidePost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList<Posts> postList;
+                ObservableList<Post> postList;
                 postList = posts.getSelectionModel().getSelectedItems();
                 //add hidden posts to hiddenpostslist
                 if(!postList.isEmpty()) {
-                    for(Posts p : postList){
+                    for(Post p : postList){
                         //db.getposts(p.getID).setHidden(true)
                         p.setHidden(true);
                         hiddenPosts.getItems().add(p);
