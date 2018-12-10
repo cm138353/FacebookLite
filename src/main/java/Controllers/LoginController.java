@@ -72,7 +72,6 @@ public class LoginController {
             public void handle(ActionEvent event) {
                 List<User> users = userDao.getAll();
                 Iterator<User> itr = users.iterator();
-                boolean auth = false;
 
                 while(itr.hasNext()) {
                     User user = itr.next();

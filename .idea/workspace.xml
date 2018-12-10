@@ -4,13 +4,14 @@
     <list default="true" id="dc152084-9276-469c-b808-d77e693c30b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Controllers/LoginController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/LoginController$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Controllers/LoginController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/LoginController$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Controllers/LoginController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/LoginController$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/RegisterController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/RegisterController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Controllers/RegisterController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/RegisterController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Controllers/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Daos/ProfileDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Daos/ProfileDao.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="255">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,18 +73,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="84" column="62" selection-start-line="84" selection-start-column="62" selection-end-line="84" selection-end-column="62" />
+            <state relative-caret-position="192">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1558#1559#0" expanded="true" />
-                <element signature="e#1642#1643#0" expanded="true" />
+                <element signature="e#1585#1586#0" expanded="true" />
+                <element signature="e#1669#1670#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="mongo://server/FBDB/users">
+          <provider selected="true" editor-type-id="MongoData" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -128,15 +134,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Classes/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -173,9 +170,9 @@
         <option value="$PROJECT_DIR$/src/main/java/Controllers/DashboardController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Classes/Profile.java" />
         <option value="$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/RegisterPage.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" />
       </list>
     </option>
   </component>
@@ -285,7 +282,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544476957466" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544478031568" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.mongoOptions" />
   </component>
@@ -356,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544472809297</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="cannot compare strings with == rip">
+      <created>1544476988420</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1544476988420</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -376,7 +380,7 @@
       <window_info id="Learn" order="7" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.19639935" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.2618658" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39770868" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -441,7 +445,8 @@
     <MESSAGE value="just added the delete DAO function" />
     <MESSAGE value="merged with Kam" />
     <MESSAGE value="profileDao.getAll() is created and done" />
-    <option name="LAST_COMMIT_MESSAGE" value="profileDao.getAll() is created and done" />
+    <MESSAGE value="cannot compare strings with == rip" />
+    <option name="LAST_COMMIT_MESSAGE" value="cannot compare strings with == rip" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -583,24 +588,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="84" column="62" selection-start-line="84" selection-start-column="62" selection-end-line="84" selection-end-column="62" />
+        <state relative-caret-position="255">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1558#1559#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/LoginController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/com/sun/javafx/tk/quantum/GlassViewEventHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="98">
+          <caret line="294" selection-start-line="294" selection-end-line="294" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1585#1586#0" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
           </folding>
         </state>
       </provider>

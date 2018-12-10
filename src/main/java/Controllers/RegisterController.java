@@ -21,6 +21,7 @@ import java.time.Month;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class RegisterController {
@@ -94,26 +95,39 @@ public class RegisterController {
                 String mail = email.getText();
                 String gen = gender.getValue();
                 System.out.println(tDOB + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
+                List<User> users = userDao.getAll();
+                Iterator<User> itr = users.iterator();
+                boolean exists = false;
+                while(itr.hasNext()) {
+                    User user = itr.next();
+                    if(user.getEmail().equals(mail) && user.getPassword().equals(pass)){
+                        exists = true;
+                    }
+                }
+                if(!exists){
+                    // setting up user credentials in users collection within DB
+                    userDao.save(new User(mail, pass));
 
-                // setting up user credentials in users collection within DB
-                userDao.save(new User(mail, pass));
+                    // setting up profile info in profiles collection
+                    ArrayList<String> pInfo = new ArrayList<>();
+                    Document doc = userDao.find(new User(mail,pass));
+                    pInfo.add(fName);
+                    pInfo.add(lName);
+                    pInfo.add(age);
+                    pInfo.add(gen);
+                    pInfo.add(doc.get("_id").toString());
 
-                // setting up profile info in profiles collection
-                ArrayList<String> pInfo = new ArrayList<>();
-                Document doc = userDao.find(new User(mail,pass));
-                pInfo.add(fName);
-                pInfo.add(lName);
-                pInfo.add(age);
-                pInfo.add(gen);
-                pInfo.add(doc.get("_id").toString());
+                    Profile profile = new Profile(pInfo);
 
-                Profile profile = new Profile(pInfo);
+                    profileDao.save(profile);
 
-                profileDao.save(profile);
+                    clear();
+                    //back to login page to sign in
+                    Main.getPrimaryStage().setScene(Main.getLoginPage());
+                }else {
+                    //ERROR MESSAGE USER EXISTS ALREADY!!!! todo
+                }
 
-                clear();
-                //back to login page to sign in
-                Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });
     }
