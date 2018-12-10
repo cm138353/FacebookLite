@@ -40,7 +40,14 @@ public class ProfileDao implements Dao<Profile> {
         Iterator<Document> itr = profilesDoc.iterator();
         while(itr.hasNext()){
             Document doc = itr.next();
-            //profiles.add(new Profile());
+            ArrayList<String> profInfo = new ArrayList<>();
+            profInfo.add(doc.getString("first"));
+            profInfo.add(doc.getString("last"));
+            profInfo.add(doc.getString("age"));
+            profInfo.add(doc.getString("gender"));
+            profInfo.add(doc.get("credId").toString());
+
+            profiles.add(new Profile(profInfo));
         }
 
 
