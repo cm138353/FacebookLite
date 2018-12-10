@@ -1,35 +1,35 @@
 package Daos;
 
-import Classes.Posts;
+import Classes.Post;
 import Interface.Dao;
 import org.bson.Document;
 
 import java.util.List;
 
-public class PostsDao implements Dao<Posts> {
+public class PostsDao implements Dao<Post> {
     @Override
-    public List<Posts> getAll() {
+    public List<Post> getAll() {
         return null;
     }
 
     @Override
-    public Document find(Posts posts) {
+    public Document find(Post post) {
         return null;
     }
 
 
     @Override
-    public void save(Posts posts) {
+    public void save(Post post) {
+        
+    }
+
+    @Override
+    public void update(Post post, String[] params) {
 
     }
 
     @Override
-    public void update(Posts posts, String[] params) {
-
-    }
-
-    @Override
-    public void delete(Posts posts) {
+    public void delete(Post post) {
 
     }
 }
