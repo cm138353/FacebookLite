@@ -1,5 +1,8 @@
 package Controllers;
 
+import Classes.User;
+import Daos.UserDao;
+import Interface.Dao;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -8,12 +11,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 import sample.Main;
 
 import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoginController {
+    private Dao userDao;
 
     @FXML
     private ResourceBundle resources;
@@ -38,6 +45,7 @@ public class LoginController {
 
     @FXML
     void initialize() {
+        userDao = new UserDao();
         addListeners();
     }
 
@@ -62,6 +70,20 @@ public class LoginController {
         });
         logIn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
+                List<User> users = userDao.getAll();
+                Iterator<User> itr = users.iterator();
+                boolean auth = false;
+
+                while(itr.hasNext()) {
+                    User user = itr.next();
+                    if(user.getEmail() == text1 && user.getPassword() == text2){auth = true;}
+                }
+
+                // todo
+                // auth == there is a user with credentials entered
+                // give user access
+                // todo
+
                 clear();
                 Main.getPrimaryStage().setScene(Main.getDashboardPage());
             }

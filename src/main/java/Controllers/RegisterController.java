@@ -77,9 +77,14 @@ public class RegisterController {
                 String mail = email.getText();
                 String gen = gender.getValue();
                 System.out.println(tDOB + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
-                //back to login page to sign in
+
+                // setting up user credentials in users collection within DB
                 userDao.save(new User(mail, pass));
+                // setting up profile info in profiles collection
+
+
                 clear();
+                //back to login page to sign in
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });

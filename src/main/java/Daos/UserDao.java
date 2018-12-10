@@ -2,12 +2,17 @@ package Daos;
 
 
 import Classes.User;
+import com.mongodb.Block;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import Interface.Dao;
+import javafx.collections.transformation.SortedList;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import sample.DbManager;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
@@ -25,7 +30,24 @@ public class UserDao implements Dao<User> {
 
     @Override
     public List<User> getAll() {
-        List<User> users = (List) usersCollection.find();
+        List<User> users = new ArrayList<>();
+        ArrayList<Document> usersDoc = new ArrayList<>();
+
+        Block<Document> storeBlock = new Block<Document>() {
+            @Override
+            public void apply(final Document document) {
+                usersDoc.add(document);
+            }
+        };
+        usersCollection.find().forEach(storeBlock);
+        Iterator<Document> itr = usersDoc.iterator();
+        while(itr.hasNext()){
+            Document doc = itr.next();
+            System.out.println(doc.toJson());
+            users.add(new User(doc.getString("email"), doc.getString("password")));
+        }
+
+
         return users;
     }
 
