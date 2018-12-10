@@ -58,11 +58,16 @@ public class Main extends Application {
         return resetPass;
     }
 
+    public static Scene getDashboardPage(){
+        return dashboard;
+    }
+
     private void loadPages() throws IOException {
         login = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("LoginPage.fxml")));
         forgotPass = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("ForgotPassword.fxml")));
         registerAcc = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("RegisterPage.fxml")));
         resetPass = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("ResetPassword.fxml")));
+        dashboard = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("Dashboard.fxml")));
     }
 
     public static void main(String[] args) {

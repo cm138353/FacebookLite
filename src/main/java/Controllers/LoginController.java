@@ -63,7 +63,7 @@ public class LoginController {
         logIn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 clear();
-                //todo
+                Main.getPrimaryStage().setScene(Main.getDashboardPage());
             }
         });
         resetPassword.setOnAction(new EventHandler<ActionEvent>() {
