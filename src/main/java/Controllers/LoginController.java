@@ -76,7 +76,7 @@ public class LoginController {
 
                 while(itr.hasNext()) {
                     User user = itr.next();
-                    if(user.getEmail() == text1 && user.getPassword() == text2){
+                    if(user.getEmail().equals(text1) && user.getPassword().equals(text2)){
                         Main.getPrimaryStage().setScene(Main.getDashboardPage());
                     }
                     else {
