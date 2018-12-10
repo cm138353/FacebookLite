@@ -100,7 +100,7 @@ public class RegisterController {
                 boolean exists = false;
                 while(itr.hasNext()) {
                     User user = itr.next();
-                    if(user.getEmail().equals(mail) && user.getPassword().equals(pass)){
+                    if(user.getEmail().equals(mail)){
                         exists = true;
                     }
                 }
@@ -126,6 +126,7 @@ public class RegisterController {
                     Main.getPrimaryStage().setScene(Main.getLoginPage());
                 }else {
                     //ERROR MESSAGE USER EXISTS ALREADY!!!! todo
+                    clear();
                 }
 
             }

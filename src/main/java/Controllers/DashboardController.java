@@ -104,8 +104,8 @@ public class DashboardController {
         //add hidden posts
         Post post1 = new Post("whats up dudes","12/9/2018",false);
         Post post2 = new Post("hey" ,"12/9/2018",false);
-        posts.getItems().addAll(post1,post2);
-        posts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        //posts.getItems().addAll(post1,post2);
+        //posts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         /*
             ArrayList<Post> postsarray = new ArrayList<Post>();
