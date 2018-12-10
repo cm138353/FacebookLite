@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dc152084-9276-469c-b808-d77e693c30b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/RegisterPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/RegisterPage.fxml" afterDir="false" />
@@ -186,7 +187,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Daos/ProfileDAO.java" />
         <option value="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Classes/Posts.java" />
         <option value="$PROJECT_DIR$/src/main/java/Classes/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/DashboardController.java" />
@@ -367,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544472035431</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="profileDao.getAll() is created and done">
+      <created>1544472809297</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1544472809297</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -451,7 +458,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="just added the delete DAO function" />
     <MESSAGE value="merged with Kam" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged with Kam" />
+    <MESSAGE value="profileDao.getAll() is created and done" />
+    <option name="LAST_COMMIT_MESSAGE" value="profileDao.getAll() is created and done" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -537,7 +545,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/UserDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Classes/Profile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1">
           <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
@@ -549,19 +557,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="72" selection-start-line="72" selection-end-line="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Classes/Profile.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#740#741#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#1661#1662#0" expanded="true" />
+            <element signature="e#1713#1714#0" expanded="true" />
+            <element signature="e#2104#2105#0" expanded="true" />
+            <element signature="e#2172#2173#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -579,22 +593,18 @@
           <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1436#1437#0" expanded="true" />
-            <element signature="e#1520#1521#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
           <caret line="61" column="48" lean-forward="true" selection-start-line="61" selection-start-column="48" selection-end-line="61" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#740#741#0" expanded="true" />
-            <element signature="e#794#795#0" expanded="true" />
-            <element signature="e#1340#1341#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
+            <element signature="e#1436#1437#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
           </folding>
         </state>
       </provider>

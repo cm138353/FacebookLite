@@ -76,7 +76,12 @@ public class LoginController {
 
                 while(itr.hasNext()) {
                     User user = itr.next();
-                    if(user.getEmail() == text1 && user.getPassword() == text2){auth = true;}
+                    if(user.getEmail() == text1 && user.getPassword() == text2){
+                        Main.getPrimaryStage().setScene(Main.getDashboardPage());
+                    }
+                    else {
+                        //alert message: Error message("invalid email or password") todo
+                    }
                 }
 
                 // todo
@@ -85,7 +90,7 @@ public class LoginController {
                 // todo
 
                 clear();
-                Main.getPrimaryStage().setScene(Main.getDashboardPage());
+
             }
         });
         resetPassword.setOnAction(new EventHandler<ActionEvent>() {

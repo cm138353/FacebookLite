@@ -56,8 +56,8 @@ public class ProfileDao implements Dao<Profile> {
 
     @Override
     public Document find(Profile profile) {
-
-        return null;
+        Document doc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
+        return doc;
     }
 
 
@@ -75,12 +75,14 @@ public class ProfileDao implements Dao<Profile> {
 
     @Override
     public void update(Profile profile, String[] params) {
-
+        profilesCollection.updateOne(
+                eq("age", profile.getAge()),
+                new Document("$set", new Document("age", params[0])));
     }
 
     @Override
     public void delete(Profile profile) {
-
+        profilesCollection.deleteOne(eq("credId",profile.getCredId()));
     }
 
 

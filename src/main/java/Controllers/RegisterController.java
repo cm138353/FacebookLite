@@ -81,6 +81,7 @@ public class RegisterController {
                 if (DOB.getValue() != null){
                     tDOB = DOB.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                 }
+
                 LocalDate today = LocalDate.now();                          //Today's date
                 LocalDate birthday = LocalDate.of(DOB.getValue().getYear(),
                         DOB.getValue().getMonth(), DOB.getValue().getDayOfMonth());  //Birth date
