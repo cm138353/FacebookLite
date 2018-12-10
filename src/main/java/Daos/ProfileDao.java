@@ -56,7 +56,7 @@ public class ProfileDao implements Dao<Profile> {
 
     @Override
     public void save(Profile profile) {
-
+        Document profileDoc = new Document();
     }
 
     @Override
