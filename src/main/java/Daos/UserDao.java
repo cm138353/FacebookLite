@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 
 public class UserDao implements Dao<User> {
@@ -40,15 +41,22 @@ public class UserDao implements Dao<User> {
             }
         };
         usersCollection.find().forEach(storeBlock);
+
         Iterator<Document> itr = usersDoc.iterator();
         while(itr.hasNext()){
             Document doc = itr.next();
-            System.out.println(doc.toJson());
             users.add(new User(doc.getString("email"), doc.getString("password")));
         }
 
 
         return users;
+    }
+
+    @Override
+    public Document find(User user) {
+        Document doc = (Document) usersCollection.find(and(eq("email", user.getEmail()),
+                eq("password", user.getPassword()))).first();
+        return doc;
     }
 
     @Override

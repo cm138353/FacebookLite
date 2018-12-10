@@ -11,9 +11,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.bson.Document;
 import sample.Main;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterController {
 
@@ -71,6 +74,7 @@ public class RegisterController {
                 if (DOB.getValue() != null){
                     tDOB = DOB.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                 }
+
                 String fName = firstName.getText();
                 String lName = lastName.getText();
                 String pass = password.getText();
@@ -80,8 +84,16 @@ public class RegisterController {
 
                 // setting up user credentials in users collection within DB
                 userDao.save(new User(mail, pass));
-                // setting up profile info in profiles collection
 
+                // setting up profile info in profiles collection
+                ArrayList<String> info = new ArrayList<>();
+                Document doc = userDao.find(new User(mail,pass));
+
+                info.add(fName);
+                info.add(lName);
+                info.add(tDOB);
+                info.add(gen);
+                info.add(doc.get("_id").toString());
 
                 clear();
                 //back to login page to sign in

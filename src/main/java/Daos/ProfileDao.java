@@ -47,6 +47,11 @@ public class ProfileDao implements Dao<Profile> {
         return profiles;
     }
 
+    @Override
+    public Document find(Profile profile) {
+
+        return null;
+    }
 
 
     @Override
