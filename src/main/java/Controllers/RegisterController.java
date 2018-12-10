@@ -1,6 +1,8 @@
 package Controllers;
 
+import Classes.Profile;
 import Classes.User;
+import Daos.ProfileDao;
 import Daos.UserDao;
 import Interface.Dao;
 import javafx.event.ActionEvent;
@@ -24,6 +26,7 @@ import java.util.List;
 public class RegisterController {
 
     private static Dao userDao;
+    private static Dao profileDao;
 
     @FXML
     private TextField firstName;
@@ -55,6 +58,7 @@ public class RegisterController {
 
         addListeners();
         userDao = new UserDao();
+        profileDao = new ProfileDao();
     }
 
     public void clear(){
@@ -88,7 +92,7 @@ public class RegisterController {
                 String pass = password.getText();
                 String mail = email.getText();
                 String gen = gender.getValue();
-                System.out.println(age + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
+                System.out.println(tDOB + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
 
                 // setting up user credentials in users collection within DB
                 userDao.save(new User(mail, pass));
@@ -99,9 +103,12 @@ public class RegisterController {
                 pInfo.add(fName);
                 pInfo.add(lName);
                 pInfo.add(age);
-
                 pInfo.add(gen);
                 pInfo.add(doc.get("_id").toString());
+
+                Profile profile = new Profile(pInfo);
+
+                profileDao.save(profile);
 
                 clear();
                 //back to login page to sign in

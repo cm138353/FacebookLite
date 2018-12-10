@@ -57,6 +57,13 @@ public class ProfileDao implements Dao<Profile> {
     @Override
     public void save(Profile profile) {
         Document profileDoc = new Document();
+        profileDoc.put("first", profile.getFirst());
+        profileDoc.put("last", profile.getLast());
+        profileDoc.put("age", profile.getAge());
+        profileDoc.put("gender", profile.getGender());
+        profileDoc.put("credId", profile.getCredId());
+        profilesCollection.insertOne(profileDoc);
+
     }
 
     @Override
