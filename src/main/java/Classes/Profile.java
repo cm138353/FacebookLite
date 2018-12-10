@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class Profile {
     private String first;
     private String last;
-    private String dob;
+    private String age;
     private String gender;
     private String credId;
 
@@ -17,7 +17,7 @@ public class Profile {
 
         this.first = itr.next();
         this.last = itr.next();
-        this.dob = itr.next();
+        this.age = itr.next();
         this.gender = itr.next();
         this.credId = itr.next();
 
@@ -29,8 +29,8 @@ public class Profile {
     public String getLast(){ return last; }
     public void setLast(String l){ last = l; }
 
-    public String getDob(){ return dob; }
-    public void setDob(String d){ dob = d; }
+    public String getAge(){ return age; }
+    public void setAge(String d){ age = d; }
 
     public String getGender(){ return gender; }
     public void setGender(String g){ gender = g; }

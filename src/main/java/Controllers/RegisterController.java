@@ -13,7 +13,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Main;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class RegisterController {
 
@@ -71,17 +75,27 @@ public class RegisterController {
                 if (DOB.getValue() != null){
                     tDOB = DOB.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                 }
+                LocalDate today = LocalDate.now();                          //Today's date
+                LocalDate birthday = LocalDate.of(DOB.getValue().getYear(),
+                        DOB.getValue().getMonth(), DOB.getValue().getDayOfMonth());  //Birth date
+
+                Period p = Period.between(birthday, today);
+                String age = String.valueOf(p.getYears());
                 String fName = firstName.getText();
                 String lName = lastName.getText();
                 String pass = password.getText();
                 String mail = email.getText();
                 String gen = gender.getValue();
-                System.out.println(tDOB + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
+                System.out.println(age + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
 
                 // setting up user credentials in users collection within DB
                 userDao.save(new User(mail, pass));
                 // setting up profile info in profiles collection
-
+                ArrayList<String> pInfo = new ArrayList<>();
+                pInfo.add(fName);
+                pInfo.add(lName);
+                pInfo.add(age);
+                pInfo.add(gen);
 
                 clear();
                 //back to login page to sign in
