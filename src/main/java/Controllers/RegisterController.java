@@ -95,8 +95,10 @@ public class RegisterController {
                 String mail = email.getText();
                 String gen = gender.getValue();
                 System.out.println(tDOB + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
+
                 List<User> users = userDao.getAll();
                 Iterator<User> itr = users.iterator();
+
                 boolean exists = false;
                 while(itr.hasNext()) {
                     User user = itr.next();

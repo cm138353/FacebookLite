@@ -89,8 +89,8 @@ public class ProfileDao implements Dao<Profile> {
 
 
         postsDoc.put("post", new Document());
-        profileDoc.put("isPostsHidden", false);
         profileDoc.put("posts", postsDoc);
+        profileDoc.put("isPostsHidden", false);
         profilesCollection.insertOne(profileDoc);
 
     }
@@ -106,8 +106,8 @@ public class ProfileDao implements Dao<Profile> {
             profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
             friendsDoc = (Document) profileDoc.get("friends");
             tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
-            if (params[1].equals("add")){
 
+            if (params[1].equals("add")){
                 tempFriendArray.add(params[2]);
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
@@ -115,7 +115,6 @@ public class ProfileDao implements Dao<Profile> {
                 );
             }
             else if (params[1].equals("remove")){
-
                 tempFriendArray.remove(params[2]);
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
@@ -136,9 +135,22 @@ public class ProfileDao implements Dao<Profile> {
             }
         } else if(params[0].equals("posts")){
 
+            if (params[1].equals("add")){}
+            if (params[1].equals("remove")){}
+            if (params[1].equals("hide")){}
+            if (params[1].equals("show")){}
+
         } else if(params[0].equals("age")){
 
+            if (params[1].equals("update")){}
+            if (params[1].equals("hide")){}
+            if (params[1].equals("show")){}
+
         } else if(params[0].equals("status")){
+
+            if (params[1].equals("update")){}
+            if (params[1].equals("hide")){}
+            if (params[1].equals("show")){}
 
         }
 
