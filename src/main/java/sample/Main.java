@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    private User user;
+    private static User mainUser;
     private Profile profile;
     FXMLLoader loader;
     Parent root;
@@ -79,7 +79,15 @@ public class Main extends Application {
         return resetPass;
     }
 
+    //KYLE: Ability to show friend dashpage
+    public static Scene getDashboardPage(User user){
+        getDashboardController().setUser(user);
+        return dashboard;
+    }
+
+    //KYLE: Shows only main user dashpage
     public static Scene getDashboardPage(){
+        getDashboardController().setUser(mainUser);
         return dashboard;
     }
 
@@ -100,7 +108,7 @@ public class Main extends Application {
     }
 
     public static DashboardController getDashboardController() {
-        return dashboardController;
+        return dashboardController.getDashBoard();
     }
 
     public static ForgotController getForgotController() {
@@ -142,6 +150,7 @@ public class Main extends Application {
         resetPass =  new Scene(getScene("ResetPassword.fxml"));
         resetController = loader.getController();
         dashboard =  new Scene(getScene("Dashboard.fxml"));
+        dashboard.getStylesheets().add("Dashboard.css");
         dashboardController = loader.getController();
         profilePage =  new Scene(getScene("FriendProfile.fxml"));
         profileController = loader.getController();
@@ -155,6 +164,14 @@ public class Main extends Application {
         loader = new FXMLLoader(getClass().getClassLoader().getResource(fxml));
         root = loader.load();
         return root;
+    }
+
+    public static void setMainUser(User user){
+        mainUser = user;
+    }
+
+    public static User getMainUser(){
+        return mainUser;
     }
 
     public static void main(String[] args) {

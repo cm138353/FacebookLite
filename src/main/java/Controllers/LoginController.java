@@ -63,11 +63,8 @@ public class LoginController {
                 //clear();
                 //if tEmail and tPass are in the database;
                     //pass all the returned values for firstname, lastname, dob, status, gender, friendslist, and postslist to dashboardcontroller
-
-                Main.getDashboardController().setUser(new User(tEmail, tPass));
-                Main.getPrimaryStage().setScene(Main.getDashboardPage());
-
-                    //Main.getDashboardController().setPosts(posts);
+                    User user = new User("a","a","a","a");
+                    Main.getPrimaryStage().setScene(Main.getDashboardPage(user));
             }
         });
         resetPassword.setOnAction(new EventHandler<ActionEvent>() {

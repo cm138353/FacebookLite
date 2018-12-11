@@ -7,6 +7,7 @@ import Classes.User;
 import Daos.ProfileDao;
 import Daos.UserDao;
 import Interface.Dao;
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -87,9 +88,10 @@ public class DashboardController {
     @FXML
     private Button openProfile;
 
+    /*
     @FXML
     private Button logoutButton;
-
+*/
 
     private ListView<Post> hiddenPosts = new ListView<>();
 
@@ -108,16 +110,18 @@ public class DashboardController {
     private Boolean hideStatus = false;
 
     private User user;
-    private Profile profile;
 
+    private Profile profile;
     private Document userDoc;
     private Document profileDoc;
 
     @FXML
     void initialize() {
 
+        //BAD TODO remove push up to main
         userDao = new UserDao();
         profileDao = new ProfileDao();
+        //
 
         userDoc = userDao.find(user.getEmail());
         profileDoc = profileDao.find(userDoc.get("_id").toString());
@@ -128,14 +132,41 @@ public class DashboardController {
         addListeners();
     }
 
+    public DashboardController getDashBoard(){
+        return this;
+    }
+
+    public void setUser(User user){
+        try {
+            System.out.println("INFO this is working");
+            this.user = user;
+            System.out.println(user.getfName());
+        }catch(Exception e){
+
+        }
+    }
+
+    private void refreshPage(){
+
+    }
+
     private void initializeProfile(){
         //get and set firstname, lastname,DOB, gender from database from email used to sign in
-        name.setText(profileDoc.get("name").toString());
-        age.setText(profileDoc.get("age").toString());
-        gender.setText(profileDoc.get("gender").toString());
-        status.setText(profileDoc.get("status").toString());
-        status.setEditable(false);
-
+        try {
+            name.setText(user.getfName());
+            //lastName.setText(user.getlName());
+            age.setText("Birthday");
+            gender.setText("Male");
+            status.setText("status here");
+            status.setEditable(false);
+        }catch (Exception e){
+            name.setText("Kenny");
+            age.setText("08/30/1997");
+            gender.setText("Male");
+            status.setText("status here");
+            status.setEditable(false);
+        }
+        //name.setText(user.getfName());
     }
 
     private void initializePosts(){
@@ -346,12 +377,14 @@ public class DashboardController {
             }
         });
 
+        /*
         logoutButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });
+        */
 
         editProfile.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -392,8 +425,9 @@ public class DashboardController {
         });
     }
 
-
-    public void setUser(User user){this.user = user;}
+    public void setFirstName(String firstName) {
+        this.name.setText(firstName);
+    }
 
     public void setProfile(Profile profile){this.profile = profile;}
 
