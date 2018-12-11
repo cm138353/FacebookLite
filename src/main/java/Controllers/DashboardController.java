@@ -35,6 +35,9 @@ public class DashboardController {
     private Label name;
 
     @FXML
+    private Label lastname;
+
+    @FXML
     private Button hideItem;
 
     @FXML
@@ -118,13 +121,17 @@ public class DashboardController {
     @FXML
     void initialize() {
 
+        //********* Bad Kamren *******//
         //BAD TODO remove push up to main
         userDao = new UserDao();
         profileDao = new ProfileDao();
-        //
-
-        //userDoc = new userDao();//userDao.find(user.getEmail());
-        //profileDoc = profileDao.find(userDoc.get("_id").toString());
+        try {
+            userDoc = userDao.find(user.getEmail());
+            profileDoc = profileDao.find(userDoc.get("_id").toString());
+        }catch (Exception e){
+            System.out.println("ERROR: Da" +e);
+        }
+        //********* Bad Kamren *******//
 
         initializeProfile();
         initializePosts();
@@ -136,34 +143,46 @@ public class DashboardController {
         return this;
     }
 
+    //DO NOT USE THIS
+    private void updateData(User user, Profile profile){
+        //Setup user
+        name.setText(user.getfName());
+        lastname.setText(user.getlName());
+        age.setText(profile.getAge());
+        gender.setText(profile.getGender());
+        status.setText(status.getText());
+        status.setEditable(false);
+    }
+
     public void setUser(User user){
         try {
             System.out.println("INFO this is working");
             this.user = user;
-            System.out.println(user.getfName());
+            try {
+                userDoc = userDao.find(user.getEmail());
+                profileDoc = profileDao.find(userDoc.get("_id").toString());
+            }catch(Exception e){
+                System.out.println("Error in Dashcontroller.setUser1 WHY IS THE MODEL IN HERE");
+            }
+            refreshPage();
         }catch(Exception e){
-
+            System.out.println("Error in DashController.setUser" + e);
         }
     }
 
     private void refreshPage(){
-
+        updateData(user, profile);
     }
 
     private void initializeProfile(){
         //get and set firstname, lastname,DOB, gender from database from email used to sign in
         try {
-            name.setText(user.getfName());
-            //lastName.setText(user.getlName());
-            age.setText("Birthday");
-            gender.setText("Male");
-            status.setText("status here");
-            status.setEditable(false);
+            refreshPage();
         }catch (Exception e){
-            name.setText("Kenny");
-            age.setText("08/30/1997");
-            gender.setText("Male");
-            status.setText("status here");
+            name.setText("DID NOT INIT");
+            age.setText("0/0/0");
+            gender.setText("nill");
+            status.setText("nill");
             status.setEditable(false);
         }
         //name.setText(user.getfName());
