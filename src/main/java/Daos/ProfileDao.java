@@ -70,6 +70,7 @@ public class ProfileDao implements Dao<Profile> {
 
         //create docs
         Document profileDoc = new Document();
+        Document ageDoc = new Document();
         Document friendsDoc = new Document();
         Document statusDoc = new Document();
         Document postsDoc = new Document();
@@ -80,7 +81,11 @@ public class ProfileDao implements Dao<Profile> {
 
         profileDoc.put("first", profile.getFirst());
         profileDoc.put("last", profile.getLast());
-        profileDoc.put("age", profile.getAge());
+
+        ageDoc.put("age", profile.getAge());
+        ageDoc.put("isHidden", false);
+        profileDoc.put("age", ageDoc);
+
         profileDoc.put("gender", profile.getGender());
         profileDoc.put("credId", profile.getCredId());
 
@@ -147,9 +152,24 @@ public class ProfileDao implements Dao<Profile> {
 
         } else if(params[0].equals("age")){
 
-            if (params[1].equals("update")){}
-            if (params[1].equals("hide")){}
-            if (params[1].equals("show")){}
+            if (params[1].equals("update")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("age.age", params[2]))
+                );
+            }
+            if (params[1].equals("hide")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("age.isHidden", true))
+                );
+            }
+            if (params[1].equals("show")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("age.isHidden", false))
+                );
+            }
 
         } else if(params[0].equals("status")){
 
