@@ -170,9 +170,15 @@ public class ProfileDao implements Dao<Profile> {
                         new Document("$set", new Document("posts", postsDocArray)));
             }
             if (params[1].equals("hide")){
-
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("isPostsHidden", true)));
             }
-            if (params[1].equals("show")){}
+            if (params[1].equals("show")){
+                profilesCollection.updateOne(
+                eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("isPostsHidden", false)));
+            }
 
         } else if(params[0].equals("age")){
 
