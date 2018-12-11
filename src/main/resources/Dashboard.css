@@ -1,0 +1,36 @@
+.root {-fx-background-color: #4267B2;}
+
+.AnchorPane{
+    -fx-background-color: #719FF6;
+}
+.anchor-pane{
+    -fx-background-color: #4267B2;
+}
+
+.PostBox {
+    -fx-background-color: #4267B2;
+}
+
+.button {
+    -fx-background-color: #4267B2;
+    -fx-text-fill: #FFFFFF;
+}
+
+.ProfileCard {
+    -fx-background-color: #4267B2;
+}
+
+.ProfilePic{
+    -fx-background-radius: 100em;
+    -fx-min-width: 75px;
+    -fx-min-height: 75px;
+    -fx-max-width: 75px;
+    -fx-max-height: 75px;
+    -fx-background-color: #FFFFFF;
+    /*-fx-background-image: url("unknownprofilepic.png");*/
+}
+/*
+.label {
+    -fx-text-fill: #FFFFFF;
+}
+*/

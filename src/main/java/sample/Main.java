@@ -29,7 +29,7 @@ public class Main extends Application {
         loadPages();
 
         primaryStage.setTitle("FacebookLite");
-        primaryStage.setScene(login);
+        primaryStage.setScene(dashboard);
         this.primaryStage = primaryStage;
 
 
@@ -68,6 +68,7 @@ public class Main extends Application {
         registerAcc = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("RegisterPage.fxml")));
         resetPass = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("ResetPassword.fxml")));
         dashboard = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("Dashboard.fxml")));
+        dashboard.getStylesheets().add("Dashboard.css");
     }
 
     public static void main(String[] args) {
