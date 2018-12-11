@@ -1,19 +1,17 @@
 package Daos;
 
+import Classes.User;
 import Interface.Dao;
 import Classes.Profile;
 import com.mongodb.Block;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import org.bson.BsonArray;
 import org.bson.Document;
 import sample.DbManager;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,29 +40,71 @@ public class ProfileDao implements Dao<Profile> {
             }
         };
         profilesCollection.find().forEach(storeBlock);
+
         Iterator<Document> itr = profilesDoc.iterator();
         while(itr.hasNext()){
             Document doc = itr.next();
+            System.out.println(doc.keySet());
+            Document anotherDoc = (Document) doc.get("age");
+            /*
             ArrayList<String> profInfo = new ArrayList<>();
             profInfo.add(doc.getString("first"));
             profInfo.add(doc.getString("last"));
-            profInfo.add(doc.getString("age"));
+            profInfo.add(doc.getInteger("age").toString());
             profInfo.add(doc.getString("gender"));
             profInfo.add(doc.get("credId").toString());
-
-            profiles.add(new Profile(profInfo));
+            */
+            String s;
+            try{
+                s = anotherDoc.get("age").toString();
+            }catch (Exception e){
+                s = "-99";
+            }
+            try{
+                Integer i = Integer.parseInt(s);
+            }catch (Exception e){
+                s = "-99";
+            }
+            profiles.add(new Profile(doc.get("first").toString(),
+                    doc.get("last").toString(),
+                    s,
+                    doc.get("gender").toString(),
+                    doc.get("credId").toString()));
         }
 
 
         return profiles;
     }
 
-    @Override
-    public Document find(String credID) {
-        Document doc = (Document) profilesCollection.find(eq("credId", credID));
-        return doc;
+    @Override //KYLE: Git Blame who wrote this class!!!!!
+    public Document find(String s) {
+        return (Document) profilesCollection.find(eq("credId", s));
     }
 
+    public Document find(String k, String s) {
+        return (Document) profilesCollection.find(eq(k, s));
+    }
+
+    public Profile find(User user) {
+
+        //ERROR there are multiple of the same identically keys
+        /*
+        Document doc = (Document) profilesCollection.find(eq("credId", user.getEmail()));
+        Document anotherDoc = (Document) doc.get("age");
+        String s;
+        try{
+            s = anotherDoc.get("age").toString();
+        }catch (Exception e){
+            s = "-99";
+        }
+        return new Profile(doc.getString("first"),
+                doc.getString("last"),
+                doc.getString(s),
+                doc.getString("gender"),
+                doc.get("credId").toString());
+                */
+        return getAll().get(0); //Cheap by pass
+    }
 
     @Override
     public void save(Profile profile) {

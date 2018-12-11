@@ -7,6 +7,7 @@ import Classes.User;
 import Daos.ProfileDao;
 import Daos.UserDao;
 import Interface.Dao;
+import Models.TheDataBase;
 import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -117,22 +118,11 @@ public class DashboardController {
     private Profile profile;
     private Document userDoc;
     private Document profileDoc;
+    private TheDataBase dataBase;
 
     @FXML
     void initialize() {
-
-        //********* Bad Kamren *******//
-        //BAD TODO remove push up to main
-        userDao = new UserDao();
-        profileDao = new ProfileDao();
-        try {
-            userDoc = userDao.find(user.getEmail());
-            profileDoc = profileDao.find(userDoc.get("_id").toString());
-        }catch (Exception e){
-            System.out.println("ERROR: Da" +e);
-        }
-        //********* Bad Kamren *******//
-
+        dataBase = Main.getDataBase();
         initializeProfile();
         initializePosts();
         initializeFriends();
@@ -146,10 +136,15 @@ public class DashboardController {
     //DO NOT USE THIS
     private void updateData(User user, Profile profile){
         //Setup user
-        name.setText(user.getfName());
-        lastname.setText(user.getlName());
-        age.setText(profile.getAge());
-        gender.setText(profile.getGender());
+        try{
+            profile = dataBase.getProfile(user);
+            name.setText(profile.getFirst());
+            lastname.setText(profile.getLast());
+            age.setText(profile.getAge().toString());
+            gender.setText(profile.getGender());
+        }catch (Exception e){
+            System.out.println("DataBase Failed to refresh new data DashControl.updateData");
+        }
         status.setText(status.getText());
         status.setEditable(false);
     }
@@ -185,7 +180,6 @@ public class DashboardController {
             status.setText("nill");
             status.setEditable(false);
         }
-        //name.setText(user.getfName());
     }
 
     private void initializePosts(){

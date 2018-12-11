@@ -10,6 +10,7 @@ import Controllers.ProfileController;
 import Controllers.RegisterController;
 import Controllers.ResetController;
 import Controllers.UpdateProfileController;
+import Models.TheDataBase;
 import com.mongodb.client.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +43,7 @@ public class Main extends Application {
     private static ProfileController profileController;
     private static PostController postController;
     private static UpdateProfileController updateProfileController;
+    private static TheDataBase database = new TheDataBase();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -172,6 +174,10 @@ public class Main extends Application {
 
     public static User getMainUser(){
         return mainUser;
+    }
+
+    public static TheDataBase getDataBase(){
+        return database;
     }
 
     public static void main(String[] args) {

@@ -115,7 +115,7 @@ public class RegisterController {
                     pInfo.add(doc.get("_id").toString());
 
                     //save profile
-                    Profile profile = new Profile(pInfo);
+                    Profile profile = new Profile(fName, lName, age, gen, doc.get("_id").toString());
                     profileDao.save(profile);
 
                     clear();

@@ -54,6 +54,7 @@ public class UserDao implements Dao<User> {
 
     @Override
     public Document find(String e) {
+        //ERROR Bug cannot have users with the same name?
         Document doc = (Document) usersCollection.find(eq("email", e));
         return doc;
     }

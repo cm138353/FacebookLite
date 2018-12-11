@@ -4,8 +4,11 @@ public class User
 {
     private String email;
     private String password;
+
+    /*
     private String fName;
     private String lName;
+    */
 
     public User(String e, String p) {
         this.email = e;
@@ -15,15 +18,19 @@ public class User
     public User(String fName, String lName, String e, String p){
         this.email = e;
         this.password = p;
+        /*
         this.lName = lName;
         this.fName = fName;
+        */
     }
 
+    /*
     public User(String fName, String lName, String e){
         this.email = e;
         this.lName = lName;
         this.fName = fName;
     }
+    */
 
     public void setEmail(String email){
 
@@ -45,6 +52,7 @@ public class User
         return password;
     }
 
+    /*
     public String getfName(){
         return fName;
     }
@@ -60,10 +68,11 @@ public class User
     public void setlName(String lName) {
         this.lName = lName;
     }
+    */
 
     @Override
     public String toString(){
-        return (fName + " " + lName);
+        return ("User: [" + email +", " + password + "]");
     }
 
 }
