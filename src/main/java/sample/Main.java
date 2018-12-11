@@ -46,7 +46,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
+        //DbManager.clearDb();
+        /*MongoDatabase db = DbManager.getDb("FBDB");
+        db.drop();*/
         loadPages();
 
         primaryStage.setTitle("FacebookLite");
