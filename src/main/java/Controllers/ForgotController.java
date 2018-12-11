@@ -58,18 +58,14 @@ public class ForgotController {
                     tDOB = DOB.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                 }
                 System.out.println(tEmail + " " + tDOB);
-                //if email and DOB is in database
+                //if tEmail and tDOB is in database
                     //go to next page
                     clear();
                     Main.getPrimaryStage().setScene(Main.getResetPassPage());
+                    Main.getResetController().setEmail(tEmail);
                 //else
                     //print error message
             }
         });
     }
-
-    protected static String getEmail(){
-        return tEmail;
-    }
-
 }

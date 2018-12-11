@@ -1,7 +1,7 @@
 package Controllers;
 
-import Classes.Post;
-import Classes.User;
+import Classes.Friend;
+import Classes.Posts;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,6 +13,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import sample.Main;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DashboardController {
 
@@ -47,7 +51,7 @@ public class DashboardController {
     private Button showHidPosts;
 
     @FXML
-    private ListView<Post> posts;
+    private ListView<Posts> posts;
 
     @FXML
     private Button addPost;
@@ -62,7 +66,7 @@ public class DashboardController {
     private Button showHidFriends;
 
     @FXML
-    private ListView<User> friendsList;
+    private ListView<Friend> friendsList;
 
     @FXML
     private Button addFriends;
@@ -76,19 +80,35 @@ public class DashboardController {
     @FXML
     private Button openProfile;
 
-    private ListView<Post> hiddenPosts = new ListView<>();
+    @FXML
+    private Button logoutButton;
 
-    private ListView<User> hiddenFriends = new ListView<>();
+
+    private ListView<Posts> hiddenPosts = new ListView<>();
+
+    private ListView<Posts> unhiddenPosts = new ListView<>();
+
+    private ListView<Friend> hiddenFriends = new ListView<>();
+
+    private ListView<Friend> unhiddenFriends = new ListView<>();
+
+    private Boolean showHiddenPosts = false;
+
+    private Boolean showHiddenFriends = false;
+
+    private Boolean hideDOB = false;
+
+    private Boolean hideStatus = false;
 
     @FXML
     void initialize() {
-        setProfile();
-        setPosts();
-        setFriends();
+        initializeProfile();
+        initializePosts();
+        initializeFriends();
         addListeners();
     }
 
-    private void setProfile(){
+    private void initializeProfile(){
         //get and set firstname, lastname,DOB, gender from database from email used to sign in
         firstName.setText("Kenny");
         lastName.setText("Sam");
@@ -99,38 +119,26 @@ public class DashboardController {
 
     }
 
-    private void setPosts(){
-        //create new posts from database and add posts to posts listview using forloop
-        //add hidden posts
-        Post post1 = new Post("whats up dudes","12/9/2018",false);
-        Post post2 = new Post("hey" ,"12/9/2018",false);
-        //posts.getItems().addAll(post1,post2);
-        //posts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    private void initializePosts(){
+        posts.getItems().clear();
+        posts.setItems(unhiddenPosts.getItems());
+        posts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
 
-        /*
-            ArrayList<Post> postsarray = new ArrayList<Post>();
-            get all posts from database as arraylist of posts and save to postsarray
-
-            for(Post p : postsarray){
-                if(!p.getHidden){
-                    posts.getItems().add(p);
-                }else{
-                    hiddenposts.getItems.add(p)
-                }
-            }
-
-            posts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        * */
+    private void initializeFriends(){
+        friendsList.getItems().clear();
+        friendsList.setItems(unhiddenFriends.getItems());
+        friendsList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     private void addListeners(){
         deletePost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList<Post> postList;
+                ObservableList<Posts> postList;
                 postList = posts.getSelectionModel().getSelectedItems();
 
-                for (Post p: postList) {
+                for (Posts p: postList) {
                     System.out.println(p.getID());
                     //remove posts from database by p.getID();
                 }
@@ -142,20 +150,35 @@ public class DashboardController {
         hidePost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList<Post> postList;
+                ObservableList<Posts> postList;
                 postList = posts.getSelectionModel().getSelectedItems();
                 //add hidden posts to hiddenpostslist
-                if(!postList.isEmpty()) {
-                    for(Post p : postList){
-                        //db.getposts(p.getID).setHidden(true)
-                        p.setHidden(true);
-                        hiddenPosts.getItems().add(p);
-                        System.out.println(p.toString() + " is hidden");
+                if(!showHiddenPosts) {
+                    if (!postList.isEmpty()) {
+                        for (Posts p : postList) {
+                            //db.getposts(p.getID).setHidden(true)
+                            p.setHidden(true);
+                            hiddenPosts.getItems().add(p);
+                            System.out.println(p.toString() + " is hidden");
+                        }
+                        //remove hidden posts from postlist
+                        posts.getItems().removeAll(postList);
+                    } else {
+                        System.out.println("no posts to hide selected");
                     }
-                    //remove hidden posts from postlist
-                    posts.getItems().removeAll(postList);
-                }else{
-                    System.out.println("no posts to hide selected");
+                }else {
+                    if (!postList.isEmpty()) {
+                        for (Posts p : postList) {
+                            //db.getposts(p.getID).setHidden(false)
+                            p.setHidden(false);
+                            unhiddenPosts.getItems().add(p);
+                            System.out.println(p.toString() + " is unhidden");
+                        }
+                        //remove unhidden posts from postlist
+                        posts.getItems().removeAll(postList);
+                    } else {
+                        System.out.println("no posts to unhide selected");
+                    }
                 }
             }
         });
@@ -163,19 +186,19 @@ public class DashboardController {
         addPost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //Main.getPrimaryStage().setScene(Main.AddPostsPage());
+                Main.getPrimaryStage().setScene(Main.getAddPostPage());
             }
         });
 
         deleteFriends.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList<User> removedFriends;
+                ObservableList<Friend> removedFriends;
                 removedFriends = friendsList.getSelectionModel().getSelectedItems();
 
-                for (User f: removedFriends) {
-                    System.out.println(f.getEmail());
-                    //remove friends from database by f.getEmail();
+                for (Friend f: removedFriends) {
+                    System.out.println(f.getFriendEmail());
+                    //remove friends from friends table by f.getEmail();
                 }
                 //remove friends from friendslist
                 friendsList.getItems().removeAll(removedFriends);
@@ -184,19 +207,34 @@ public class DashboardController {
         hideFriends.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList<User> friendsToHide;
+                ObservableList<Friend> friendsToHide;
                 friendsToHide = friendsList.getSelectionModel().getSelectedItems();
                 //add hidden posts to hiddenpostslist
-                if(!friendsToHide.isEmpty()) {
-                    for(User f : friendsToHide){
-                        //db.getposts(f.getEmail).setHidden(true)
-                        f.setHidden(true);
-                        hiddenFriends.getItems().add(f);
-                        System.out.println(f.toString() + " is hidden");
+
+                if (!showHiddenFriends) {
+                    if (!friendsToHide.isEmpty()) {
+                        for (Friend f : friendsToHide) {
+                            //db.getposts(f.getEmail).setHidden(true)
+                            //f.setHidden(true);
+                            hiddenFriends.getItems().add(f);
+                            System.out.println(f.toString() + " is hidden");
+                        }
+                        friendsList.getItems().removeAll(friendsToHide);
+                    } else {
+                        System.out.println("no friends to hide selected");
                     }
-                    friendsList.getItems().removeAll(friendsToHide);
-                }else{
-                    System.out.println("no friends to hide selected");
+                }else {
+                    if (!friendsToHide.isEmpty()) {
+                        for (Friend f : friendsToHide) {
+                            //db.getposts(f.getEmail).setHidden(false)
+                            //f.setHidden(false);
+                            unhiddenFriends.getItems().add(f);
+                            System.out.println(f.toString() + " is unhidden");
+                        }
+                        friendsList.getItems().removeAll(friendsToHide);
+                    } else {
+                        System.out.println("no friends to unhide selected");
+                    }
                 }
             }
         });
@@ -215,21 +253,173 @@ public class DashboardController {
             }
         });
 
-        //todo
-        /*
-        * listeners for, adding friends or posts, hiding profile items, editing profile items, showing hidden posts or friends, and opening a new profile page for friends
-        * */
+        showHidPosts.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(!showHiddenPosts){
+                    posts.setItems(hiddenPosts.getItems());
+                    showHidPosts.setText("See Posts");
+                    hidePost.setText("Unhide");
+                    addPost.setVisible(false);
+                    showHiddenPosts = true;
+                }else {
+                    posts.setItems(unhiddenPosts.getItems());
+                    showHidPosts.setText("See Hidden");
+                    hidePost.setText("Hide");
+                    addPost.setVisible(true);
+                    showHiddenPosts = false;
+                }
+            }
+        });
 
+        showHidFriends.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(!showHiddenFriends){
+                    friendsList.setItems(hiddenFriends.getItems());
+                    showHidFriends.setText("See Friends");
+                    hideFriends.setText("Unhide");
+                    addFriends.setVisible(false);
+                    showHiddenFriends = true;
+                }else {
+                    friendsList.setItems(unhiddenFriends.getItems());
+                    showHidFriends.setText("See Hidden");
+                    hideFriends.setText("Hide");
+                    addFriends.setVisible(true);
+                    showHiddenFriends = false;
+                }
+            }
+        });
+
+        openProfile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ObservableList<Friend> selectedFriends;
+                selectedFriends = friendsList.getSelectionModel().getSelectedItems();
+
+                if(selectedFriends.size() == 1) {
+                    Main.getPrimaryStage().setScene(Main.getProfilePage());
+                    Main.getProfileController().setFirstName(selectedFriends.get(0).getFriendFirstName());
+                    Main.getProfileController().setLastName(selectedFriends.get(0).getFriendLastName());
+                    System.out.println(selectedFriends.get(0).getProfileEmail());
+                    //get DOB, gender ,friendslist, posts, and status from database using selectedFriends.get(0).getProfileEmail();
+                    Main.getProfileController().setDOB("08/20/1920");
+                    Main.getProfileController().setGender("Male");
+                    Main.getProfileController().setStatus("Doing nothing");
+
+                    Friend friend1 = new Friend("Jim@gmail.com", "Earl", "Yu","Michael@gmail.com",false);
+                    Friend friend2 = new Friend("Jim@gmail.com", "Michael", "Yu","kyle@gmail.com",false);
+                    ArrayList<Friend> friends = new ArrayList<>();
+                    friends.add(friend1);
+                    friends.add(friend2);
+                    Main.getProfileController().setFriendsList(friends);
+
+
+                    Posts post1 = new Posts("hi there","12/10/2018",false);
+                    Posts post2 = new Posts("hey" ,"12/10/2018",false);
+                    ArrayList<Posts> posts = new ArrayList<>();
+                    posts.add(post1);
+                    posts.add(post2);
+                    Main.getProfileController().setPosts(posts);
+                }else {
+                    System.out.println("error");
+                }
+            }
+        });
+
+        logoutButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Main.getPrimaryStage().setScene(Main.getLoginPage());
+            }
+        });
+
+        editProfile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Main.getPrimaryStage().setScene(Main.getUpdateProfPage());
+            }
+        });
+
+        hideItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //replace hideDOB and hideStatus with the value returned from the database that says to hide the DOB or Status
+                System.out.println(toHide.getValue());
+                if(!hideDOB && toHide.getValue().equals("Age")){
+                    //set boolean for hiding DOB for profile to true in database
+                    System.out.println(hideDOB + " " + toHide.getValue());
+                    DOB.setVisible(false);
+                    hideDOB = true;
+                }else if(hideDOB && toHide.getValue().equals("Age")){
+                    //set boolean for hiding DOB for profile to false in database
+                    System.out.println(hideDOB + " " + toHide.getValue());
+                    DOB.setVisible(true);
+                    hideDOB = false;
+                }
+
+                if(!hideStatus && toHide.getValue().equals("Status")){
+                    //set bool for hiding status for profile to true
+                    System.out.println(hideStatus + " " + toHide.getValue());
+                    status.setVisible(false);
+                    hideStatus = true;
+                }else if (hideStatus && toHide.getValue().equals("Status")){
+                    //set bool for hiding status for profile to false
+                    System.out.println(hideStatus + " " + toHide.getValue());
+                    status.setVisible(true);
+                    hideStatus = false;
+                }
+            }
+        });
     }
 
-    private void setFriends(){
-        User friend1 = new User("Kenny", "Sam", "ken@gmail.com");
-        User friend2 = new User("Joey", "Sam", "Joe@gmail.com");
-        friendsList.getItems().addAll(friend1,friend2);
-        friendsList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        //similar to adding posts, columns in table for friends list should be:
-        //email of friend, firstname of friend, last name of friend, firstname of profile, lastname of profile, hidden
+    public void setFirstName(String firstName) {
+        this.firstName.setText(firstName);
     }
 
+    public void setLastName(String lastName) {
+        this.lastName.setText(lastName);
+    }
+
+    public void setGender(String gender) {
+        this.gender.setText(gender);
+    }
+
+    public void setDOB(String DOB){
+        this.DOB.setText(DOB);
+    }
+
+    public void setStatus(String status){
+        this.status.setText(status);
+    }
+
+    public void setPosts(List<Posts> posts) {
+        this.unhiddenPosts.getItems().clear();
+        this.hiddenPosts.getItems().clear();
+        for(Posts post : posts) {
+            if (!post.getHidden()) {
+                this.unhiddenPosts.getItems().add(post);
+            }
+            else {
+                this.hiddenPosts.getItems().add(post);
+            }
+        }
+    }
+
+    public void setFriendsList(List<Friend> friendsList) {
+        this.hiddenFriends.getItems().clear();
+        this.unhiddenFriends.getItems().clear();
+        for(Friend friend: friendsList){
+            if(!friend.getHidden()) {
+                this.unhiddenFriends.getItems().add(friend);
+            }else {
+                this.hiddenFriends.getItems().add(friend);
+            }
+        }
+    }
+
+    public void addPost(Posts post){
+        posts.getItems().add(post);
+    }
 }
