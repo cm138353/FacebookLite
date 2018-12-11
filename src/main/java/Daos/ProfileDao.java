@@ -10,7 +10,9 @@ import org.bson.Document;
 import sample.DbManager;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -67,6 +69,8 @@ public class ProfileDao implements Dao<Profile> {
     public void save(Profile profile) {
         Document profileDoc = new Document();
         Document friendsDoc = new Document();
+        Document statusDoc = new Document();
+        Document postsDoc = new Document();
         ArrayList<String> friendIdArray = new ArrayList<>();
 
         profileDoc.put("first", profile.getFirst());
@@ -78,6 +82,15 @@ public class ProfileDao implements Dao<Profile> {
         friendsDoc.put("list", friendIdArray);
         friendsDoc.put("isHidden", false);
         profileDoc.put("friends",  friendsDoc);
+
+        statusDoc.put("content", "");
+        statusDoc.put("isHidden", false);
+        profileDoc.put("status", statusDoc);
+
+
+        postsDoc.put("post", new Document());
+        profileDoc.put("isPostsHidden", false);
+        profileDoc.put("posts", postsDoc);
         profilesCollection.insertOne(profileDoc);
 
     }
@@ -87,20 +100,26 @@ public class ProfileDao implements Dao<Profile> {
         Document profileDoc;
         Document friendsDoc;
         ArrayList<String> tempFriendArray;
-        if (params[0].equals("add")){
-            profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
-            friendsDoc = (Document) profileDoc.get("friends");
-            tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
-            tempFriendArray.add(params[1]);
-            profilesCollection.updateOne(
-                    eq("credId", profile.getCredId()),
-                    new Document("$set", new Document("friends.list",tempFriendArray))
-            );
-        }
-        else if (params[0].equals("remove")){
 
-        }
-        else if (params[0].equals("hide")){
+
+        if(params[0].equals("friends")) {
+            if (params[1].equals("add")) {
+                profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
+                friendsDoc = (Document) profileDoc.get("friends");
+                tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
+                tempFriendArray.add(params[2]);
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("friends.list", tempFriendArray))
+                );
+            } else if (params[0].equals("remove")) {
+
+            } else if (params[0].equals("hide")) {
+
+            }
+        } else if(params[0].equals("status")){
+
+        } else if(params[0].equals("age")){
 
         }
 
