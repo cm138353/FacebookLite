@@ -155,15 +155,21 @@ public class ProfileDao implements Dao<Profile> {
                 postDoc.put("time", currentTime);
                 postsDocArray.add(postDoc);
 
+
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
                         new Document("$set", new Document("posts", postsDocArray)));
 
             }
             if (params[1].equals("remove")){
+                postsDocArray.remove(Integer.getInteger(params[2]));
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("posts", postsDocArray)));
+            }
+            if (params[1].equals("hide")){
 
             }
-            if (params[1].equals("hide")){}
             if (params[1].equals("show")){}
 
         } else if(params[0].equals("age")){
