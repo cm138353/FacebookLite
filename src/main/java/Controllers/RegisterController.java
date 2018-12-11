@@ -123,13 +123,6 @@ public class RegisterController {
                     Profile profile = new Profile(pInfo);
                     profileDao.save(profile);
 
-                    String[] temp = {"posts", "add", "hello there mate"};
-                    profileDao.update(profile, temp);
-                    profileDao.update(profile, temp);
-
-                    temp[1] = "remove";
-                    temp[2] = "0";
-                    //profileDao.update(profile, temp);
                     clear();
                     //back to login page to sign in
                     Main.getPrimaryStage().setScene(Main.getLoginPage());

@@ -162,10 +162,9 @@ public class ProfileDao implements Dao<Profile> {
 
             }
             if (params[1].equals("remove")){
-                //postsDocArray = ((ArrayList<Document>) ((Document) profilesCollection
-                //        .find(eq("credId", profile.getCredId())).first()).get("posts"));
 
-                //postsDocArray.remove();
+                postDoc = postsDocArray.get(Integer.valueOf(params[2]));
+                postsDocArray.remove(postDoc);
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
                         new Document("$set", new Document("posts", postsDocArray)));
