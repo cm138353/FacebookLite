@@ -23,8 +23,8 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="hideItem" layoutX="259.0" layoutY="337.0" mnemonicParsing="false" text="Hide" />
-                  <ComboBox fx:id="toHide" layoutX="179.0" layoutY="337.0" prefHeight="25.0" prefWidth="69.0">
+                  <Button fx:id="hideItem" layoutX="259.0" layoutY="337.0" mnemonicParsing="false" text="Hide/Unhide" />
+                  <ComboBox fx:id="toHide" layoutX="164.0" layoutY="337.0" prefHeight="25.0" prefWidth="84.0">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Age" />

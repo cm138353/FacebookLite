@@ -5,9 +5,11 @@ import Classes.User;
 import Controllers.DashboardController;
 import Controllers.ForgotController;
 import Controllers.LoginController;
+import Controllers.PostController;
 import Controllers.ProfileController;
 import Controllers.RegisterController;
 import Controllers.ResetController;
+import Controllers.UpdateProfileController;
 import com.mongodb.client.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,12 +32,16 @@ public class Main extends Application {
     private static Scene registerAcc;
     private static Scene resetPass;
     private static Scene profilePage;
+    private static Scene addPostPage;
+    private static Scene updateProfPage;
     private static LoginController loginController;
     private static ForgotController forgotController;
     private static DashboardController dashboardController;
     private static RegisterController registerController;
     private static ResetController resetController;
     private static ProfileController profileController;
+    private static PostController postController;
+    private static UpdateProfileController updateProfileController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -81,6 +87,14 @@ public class Main extends Application {
         return profilePage;
     }
 
+    public static Scene getAddPostPage() {
+        return addPostPage;
+    }
+
+    public static Scene getUpdateProfPage() {
+        return updateProfPage;
+    }
+
     public static ProfileController getProfileController(){
         return profileController;
     }
@@ -105,6 +119,14 @@ public class Main extends Application {
         return loginController;
     }
 
+    public static PostController getPostController() {
+        return postController;
+    }
+
+    public static UpdateProfileController getUpdateProfileController() {
+        return updateProfileController;
+    }
+
     private void loadPages() throws IOException {
         /*login = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("LoginPage.fxml")));
         forgotPass = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("ForgotPassword.fxml")));
@@ -123,6 +145,10 @@ public class Main extends Application {
         dashboardController = loader.getController();
         profilePage =  new Scene(getScene("FriendProfile.fxml"));
         profileController = loader.getController();
+        addPostPage = new Scene(getScene("AddPost.fxml"));
+        postController = loader.getController();
+        updateProfPage = new Scene(getScene("UpdateProfile.fxml"));
+        updateProfileController = loader.getController();
     }
 
     private Parent getScene(String fxml) throws IOException {

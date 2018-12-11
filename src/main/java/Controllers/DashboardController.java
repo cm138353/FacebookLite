@@ -96,6 +96,10 @@ public class DashboardController {
 
     private Boolean showHiddenFriends = false;
 
+    private Boolean hideDOB = false;
+
+    private Boolean hideStatus = false;
+
     @FXML
     void initialize() {
         initializeProfile();
@@ -182,7 +186,7 @@ public class DashboardController {
         addPost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //Main.getPrimaryStage().setScene(Main.AddPostsPage());
+                Main.getPrimaryStage().setScene(Main.getAddPostPage());
             }
         });
 
@@ -329,6 +333,44 @@ public class DashboardController {
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });
+
+        editProfile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Main.getPrimaryStage().setScene(Main.getUpdateProfPage());
+            }
+        });
+
+        hideItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //replace hideDOB and hideStatus with the value returned from the database that says to hide the DOB or Status
+                System.out.println(toHide.getValue());
+                if(!hideDOB && toHide.getValue().equals("Age")){
+                    //set boolean for hiding DOB for profile to true in database
+                    System.out.println(hideDOB + " " + toHide.getValue());
+                    DOB.setVisible(false);
+                    hideDOB = true;
+                }else if(hideDOB && toHide.getValue().equals("Age")){
+                    //set boolean for hiding DOB for profile to false in database
+                    System.out.println(hideDOB + " " + toHide.getValue());
+                    DOB.setVisible(true);
+                    hideDOB = false;
+                }
+
+                if(!hideStatus && toHide.getValue().equals("Status")){
+                    //set bool for hiding status for profile to true
+                    System.out.println(hideStatus + " " + toHide.getValue());
+                    status.setVisible(false);
+                    hideStatus = true;
+                }else if (hideStatus && toHide.getValue().equals("Status")){
+                    //set bool for hiding status for profile to false
+                    System.out.println(hideStatus + " " + toHide.getValue());
+                    status.setVisible(true);
+                    hideStatus = false;
+                }
+            }
+        });
     }
 
 
@@ -375,5 +417,9 @@ public class DashboardController {
                 this.hiddenFriends.getItems().add(friend);
             }
         }
+    }
+
+    public void addPost(Posts post){
+        posts.getItems().add(post);
     }
 }
