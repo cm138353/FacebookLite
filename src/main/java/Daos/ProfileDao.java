@@ -144,7 +144,7 @@ public class ProfileDao implements Dao<Profile> {
             }
         } else if(params[0].equals("posts")){
             Document postDoc = new Document();
-            ArrayList<Document> postDocArray = new ArrayList<>();
+
 
             if (params[1].equals("add")){
                 LocalDate currentDate = LocalDate.now();
