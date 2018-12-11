@@ -78,10 +78,6 @@ public class RegisterController {
         });
         registerButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                String tDOB = "";
-                if (DOB.getValue() != null){
-                    tDOB = DOB.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                }
 
                 LocalDate today = LocalDate.now();                          //Today's date
                 LocalDate birthday = LocalDate.of(DOB.getValue().getYear(),
@@ -94,7 +90,7 @@ public class RegisterController {
                 String pass = password.getText();
                 String mail = email.getText();
                 String gen = gender.getValue();
-                System.out.println(tDOB + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
+                System.out.println(age + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
 
                 List<User> users = userDao.getAll();
                 Iterator<User> itr = users.iterator();
