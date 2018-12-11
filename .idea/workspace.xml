@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="dc152084-9276-469c-b808-d77e693c30b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Classes/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Classes/Profile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/RegisterController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/RegisterController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/RegisterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Daos/ProfileDao$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Daos/ProfileDao$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Daos/ProfileDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Daos/ProfileDao.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,13 +57,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="162" selection-start-line="162" selection-end-line="162" />
+            <state relative-caret-position="117">
+              <caret line="145" column="46" lean-forward="true" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#972#973#0" expanded="true" />
                 <element signature="e#1029#1030#0" expanded="true" />
-                <element signature="e#6630#6631#0" expanded="true" />
+                <element signature="e#6699#6700#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,8 +151,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Daos/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Classes/Profile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/RegisterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java" />
       </list>
     </option>
   </component>
@@ -258,7 +262,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544493292943" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544493883407" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.mongoOptions" />
   </component>
@@ -344,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544491477033</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="blah">
+      <created>1544493316599</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1544493316599</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -354,7 +365,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20726173" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20726173" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -383,7 +394,7 @@
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" weight="0.3292683" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Mongo Explorer" order="8" visible="true" weight="0.1732224" />
+      <window_info active="true" anchor="right" id="Mongo Explorer" order="8" visible="true" weight="0.1732224" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info anchor="right" id="Maven Projects" order="10" />
     </layout>
@@ -431,7 +442,8 @@
     <MESSAGE value="profileDao.getAll() is created and done" />
     <MESSAGE value="clean up regcontroller" />
     <MESSAGE value="some comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="some comments" />
+    <MESSAGE value="blah" />
+    <option name="LAST_COMMIT_MESSAGE" value="blah" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -590,13 +602,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="162" selection-start-line="162" selection-end-line="162" />
+        <state relative-caret-position="117">
+          <caret line="145" column="46" lean-forward="true" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#972#973#0" expanded="true" />
             <element signature="e#1029#1030#0" expanded="true" />
-            <element signature="e#6630#6631#0" expanded="true" />
+            <element signature="e#6699#6700#0" expanded="true" />
           </folding>
         </state>
       </provider>

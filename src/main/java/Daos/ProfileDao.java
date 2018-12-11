@@ -98,8 +98,6 @@ public class ProfileDao implements Dao<Profile> {
         statusDoc.put("isHidden", false);
         profileDoc.put("status", statusDoc);
 
-
-        postsDoc.put("post", new Document());
         profileDoc.put("posts", postsDoc);
         profileDoc.put("isPostsHidden", false);
         profilesCollection.insertOne(profileDoc);
@@ -146,6 +144,7 @@ public class ProfileDao implements Dao<Profile> {
             }
         } else if(params[0].equals("posts")){
             Document postDoc = new Document();
+            ArrayList<Document> postDocArray = new ArrayList<>();
 
             if (params[1].equals("add")){
                 LocalDate currentDate = LocalDate.now();
@@ -154,6 +153,8 @@ public class ProfileDao implements Dao<Profile> {
                 postDoc.put("content", params[2]);
                 postDoc.put("date", currentDate);
                 postDoc.put("time", currentTime);
+
+
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
                         new Document("$set", new Document("posts", postDoc)));
