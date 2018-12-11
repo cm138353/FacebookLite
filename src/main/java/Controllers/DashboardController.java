@@ -2,6 +2,9 @@ package Controllers;
 
 import Classes.Friend;
 import Classes.Post;
+import Daos.ProfileDao;
+import Daos.UserDao;
+import Interface.Dao;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,8 +23,12 @@ import java.util.List;
 
 public class DashboardController {
 
+
+    private static Dao userDao;
+    private static Dao profileDao;
+
     @FXML
-    private Label firstName;
+    private Label name;
 
     @FXML
     private Button hideItem;
@@ -102,6 +109,10 @@ public class DashboardController {
 
     @FXML
     void initialize() {
+
+        userDao = new UserDao();
+        profileDao = new ProfileDao();
+
         initializeProfile();
         initializePosts();
         initializeFriends();
@@ -110,8 +121,7 @@ public class DashboardController {
 
     private void initializeProfile(){
         //get and set firstname, lastname,DOB, gender from database from email used to sign in
-        firstName.setText("Kenny");
-        lastName.setText("Sam");
+        name.setText("Kenny");
         DOB.setText("08/30/1997");
         gender.setText("Male");
         status.setText("status here");
