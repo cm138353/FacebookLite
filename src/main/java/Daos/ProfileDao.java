@@ -11,6 +11,7 @@ import sample.DbManager;
 
 import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -139,8 +140,20 @@ public class ProfileDao implements Dao<Profile> {
                 );
             }
         } else if(params[0].equals("posts")){
+            Document postDoc = new Document();
 
-            if (params[1].equals("add")){}
+            if (params[1].equals("add")){
+                LocalDate today = LocalDate.now();
+                LocalTime currentTime = LocalTime.now();
+
+                postDoc.put("content", params[2]);
+                postDoc.put("date", today);
+                postDoc.put("time", currentTime);
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("posts", )));
+
+            }
             if (params[1].equals("remove")){}
             if (params[1].equals("hide")){}
             if (params[1].equals("show")){}
