@@ -18,6 +18,8 @@ public class ResetController {
     @FXML
     private Button cancel;
 
+    private String email;
+
     @FXML
     void initialize() {
         addListeners();
@@ -31,7 +33,7 @@ public class ResetController {
         confirm.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 //overwrite database with new password by checking email
-                String email = ForgotController.getEmail();
+                //String email = ForgotController.getEmail();
                 String nPassword = newPassword.getText();
                 System.out.println(email + " " + nPassword);
                 // db.users.find(email).setPass(nPassword)
@@ -46,5 +48,9 @@ public class ResetController {
                 Main.getPrimaryStage().setScene(Main.getLoginPage());
             }
         });
+    }
+
+    public void setEmail(String email){
+        this.email = email;
     }
 }

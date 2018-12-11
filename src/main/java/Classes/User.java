@@ -6,7 +6,6 @@ public class User
     private String password;
     private String fName;
     private String lName;
-    private boolean hidden = false;
 
     public User(String e, String p) {
         this.email = e;
@@ -60,14 +59,6 @@ public class User
 
     public void setlName(String lName) {
         this.lName = lName;
-    }
-
-    public void setHidden(boolean hidden) {
-        this.hidden = hidden;
-    }
-
-    public Boolean getHidden(){
-        return hidden;
     }
 
     @Override
