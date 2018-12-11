@@ -74,7 +74,7 @@ public class ProfileDao implements Dao<Profile> {
         Document ageDoc = new Document();
         Document friendsDoc = new Document();
         Document statusDoc = new Document();
-        Document postsDoc = new Document();
+        ArrayList<Document> postsDocArray = new ArrayList<>();
 
         //friend list to manipulate
         ArrayList<String> friendIdArray = new ArrayList<>();
@@ -98,7 +98,7 @@ public class ProfileDao implements Dao<Profile> {
         statusDoc.put("isHidden", false);
         profileDoc.put("status", statusDoc);
 
-        profileDoc.put("posts", postsDoc);
+        profileDoc.put("posts", postsDocArray);
         profileDoc.put("isPostsHidden", false);
         profilesCollection.insertOne(profileDoc);
 
@@ -144,7 +144,6 @@ public class ProfileDao implements Dao<Profile> {
             }
         } else if(params[0].equals("posts")){
             Document postDoc = new Document();
-
 
             if (params[1].equals("add")){
                 LocalDate currentDate = LocalDate.now();
