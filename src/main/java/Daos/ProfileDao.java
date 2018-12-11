@@ -85,24 +85,45 @@ public class ProfileDao implements Dao<Profile> {
     @Override
     public void update(Profile profile, String[] params) {
         Document profileDoc;
-        Document friendsDoc;
-        ArrayList<String> tempFriendArray;
-        if (params[0].equals("add")){
+
+        if(params[0].equals("friends")){
+
+            Document friendsDoc;
+            ArrayList<String> tempFriendArray;
             profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
             friendsDoc = (Document) profileDoc.get("friends");
             tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
-            tempFriendArray.add(params[1]);
-            profilesCollection.updateOne(
-                    eq("credId", profile.getCredId()),
-                    new Document("$set", new Document("friends.list",tempFriendArray))
-            );
-        }
-        else if (params[0].equals("remove")){
+            if (params[1].equals("add")){
 
-        }
-        else if (params[0].equals("hide")){
+                tempFriendArray.add(params[2]);
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("friends.list",tempFriendArray))
+                );
+            }
+            else if (params[1].equals("remove")){
 
+                tempFriendArray.remove(params[2]);
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("friends.list", tempFriendArray))
+                );
+            }
+            else if (params[1].equals("hide")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("friends.isHidden", true))
+                );
+            }
+            else if (params[1].equals("show")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("friends.isHidden", false))
+                );
+            }
         }
+
+
 
 
 
