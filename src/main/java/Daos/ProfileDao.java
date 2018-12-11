@@ -103,10 +103,11 @@ public class ProfileDao implements Dao<Profile> {
 
 
         if(params[0].equals("friends")) {
+            profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
+            friendsDoc = (Document) profileDoc.get("friends");
+            tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
+
             if (params[1].equals("add")) {
-                profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
-                friendsDoc = (Document) profileDoc.get("friends");
-                tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
                 tempFriendArray.add(params[2]);
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
