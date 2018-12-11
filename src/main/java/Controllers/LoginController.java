@@ -77,12 +77,7 @@ public class LoginController {
                     friends.add(friend2);
                     Main.getDashboardController().setFriendsList(friends);
 
-                    Posts post1 = new Posts("whats up dude","12/10/2018",false);
-                    Posts post2 = new Posts("hey" ,"12/10/2018",false);
-                    ArrayList<Posts> posts = new ArrayList<>();
-                    posts.add(post1);
-                    posts.add(post2);
-                    Main.getDashboardController().setPosts(posts);
+                    //Main.getDashboardController().setPosts(posts);
             }
         });
         resetPassword.setOnAction(new EventHandler<ActionEvent>() {

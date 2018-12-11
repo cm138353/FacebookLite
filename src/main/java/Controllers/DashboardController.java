@@ -2,6 +2,8 @@ package Controllers;
 
 import Classes.Friend;
 import Classes.Post;
+import Classes.Profile;
+import Classes.User;
 import Daos.ProfileDao;
 import Daos.UserDao;
 import Interface.Dao;
@@ -37,9 +39,6 @@ public class DashboardController {
     private ComboBox<String> toHide;
 
     @FXML
-    private Label lastName;
-
-    @FXML
     private Label gender;
 
     @FXML
@@ -52,7 +51,7 @@ public class DashboardController {
     private Button updateStatus;
 
     @FXML
-    private Label DOB;
+    private Label age;
 
     @FXML
     private Button showHidPosts;
@@ -107,6 +106,9 @@ public class DashboardController {
 
     private Boolean hideStatus = false;
 
+    private User user;
+    private Profile profile;
+
     @FXML
     void initialize() {
 
@@ -121,8 +123,8 @@ public class DashboardController {
 
     private void initializeProfile(){
         //get and set firstname, lastname,DOB, gender from database from email used to sign in
-        name.setText("Kenny");
-        DOB.setText("08/30/1997");
+        name.setText(profile.getFirst() + profile.getLast());
+        age.setText("08/30/1997");
         gender.setText("Male");
         status.setText("status here");
         status.setEditable(false);
@@ -384,25 +386,9 @@ public class DashboardController {
     }
 
 
-    public void setFirstName(String firstName) {
-        this.firstName.setText(firstName);
-    }
+    public void setUser(User user){this.user = user;}
 
-    public void setLastName(String lastName) {
-        this.lastName.setText(lastName);
-    }
-
-    public void setGender(String gender) {
-        this.gender.setText(gender);
-    }
-
-    public void setDOB(String DOB){
-        this.DOB.setText(DOB);
-    }
-
-    public void setStatus(String status){
-        this.status.setText(status);
-    }
+    public void setProfile(Profile profile){this.profile = profile;}
 
     public void setPosts(List<Post> posts) {
         this.unhiddenPosts.getItems().clear();
