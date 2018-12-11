@@ -1,7 +1,7 @@
 package Controllers;
 
 import Classes.Friend;
-import Classes.Posts;
+import Classes.Post;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,7 +34,7 @@ public class ProfileController {
     private Label DOB;
 
     @FXML
-    private ListView<Posts> posts;
+    private ListView<Post> posts;
 
     @FXML
     private ListView<Friend> friendsList;
@@ -125,8 +125,8 @@ public class ProfileController {
         this.status.setText(status);
     }
 
-    public void setPosts(List<Posts> posts) {
-        for(Posts post : posts) {
+    public void setPosts(List<Post> posts) {
+        for(Post post : posts) {
             if(!post.getHidden())
                 this.posts.getItems().add(post);
         }

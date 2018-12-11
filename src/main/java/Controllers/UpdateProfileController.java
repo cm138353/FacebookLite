@@ -48,10 +48,10 @@ public class UpdateProfileController {
             @Override
             public void handle(ActionEvent event) {
                 //overwrite old first name, lastname, DOB, or gender from database here
-                Main.getDashboardController().setFirstName(firstName.getText());
-                Main.getDashboardController().setLastName(lastName.getText());
-                Main.getDashboardController().setDOB(DOB.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
-                Main.getDashboardController().setGender(gender.getValue());
+                //Main.getDashboardController().setFirstName(firstName.getText());
+                //Main.getDashboardController().setLastName(lastName.getText());
+                //Main.getDashboardController().setDOB(DOB.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+                //Main.getDashboardController().setGender(gender.getValue());
                 clear();
                 Main.getPrimaryStage().setScene(Main.getDashboardPage());
             }

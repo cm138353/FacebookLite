@@ -60,8 +60,8 @@ public class ProfileDao implements Dao<Profile> {
     }
 
     @Override
-    public Document find(Profile profile) {
-        Document doc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
+    public Document find(String credID) {
+        Document doc = (Document) profilesCollection.find(eq("credId", credID));
         return doc;
     }
 

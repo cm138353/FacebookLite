@@ -1,7 +1,7 @@
 package Controllers;
 
 import Classes.Friend;
-import Classes.Posts;
+import Classes.Post;
 import Classes.User;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -64,11 +64,6 @@ public class LoginController {
                 //if tEmail and tPass are in the database;
                     //pass all the returned values for firstname, lastname, dob, status, gender, friendslist, and postslist to dashboardcontroller
                     Main.getPrimaryStage().setScene(Main.getDashboardPage());
-                    Main.getDashboardController().setFirstName("John");
-                    Main.getDashboardController().setLastName("McCain");
-                    Main.getDashboardController().setDOB("12/12/2001");
-                    Main.getDashboardController().setStatus("I'm at home");
-                    Main.getDashboardController().setGender("Male");
 
                     Friend friend1 = new Friend("John@gmail.com", "Ken", "Yu","ken@gmail.com",false);
                     Friend friend2 = new Friend("John@gmail.com", "Kevin", "Yu","kevin@gmail.com",false);

@@ -1,6 +1,6 @@
 package Controllers;
 
-import Classes.Posts;
+import Classes.Post;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,7 +35,7 @@ public class PostController {
             @Override
             public void handle(ActionEvent event) {
                 if(dateBox.getValue()!= null && !postText.getText().isEmpty()) {
-                    Posts post1 = new Posts(postText.getText(), dateBox.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")), false);
+                    Post post1 = new Post(postText.getText(), dateBox.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")), false);
                     //add post to database here
                     Main.getDashboardController().addPost(post1);
                     dateBox.setValue(null);

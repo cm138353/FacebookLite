@@ -18,6 +18,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import org.bson.Document;
 import sample.Main;
 
 import java.util.ArrayList;
@@ -123,10 +124,12 @@ public class DashboardController {
 
     private void initializeProfile(){
         //get and set firstname, lastname,DOB, gender from database from email used to sign in
-        name.setText(profile.getFirst() + profile.getLast());
-        age.setText("08/30/1997");
-        gender.setText("Male");
-        status.setText("status here");
+        Document profileDoc = profileDao.find("temp");
+
+        name.setText(profileDoc.get("name").toString());
+        age.setText(profileDoc.get("age").toString());
+        gender.setText(profileDoc.get("gender").toString());
+        status.setText(profileDoc.get("status").toString());
         status.setEditable(false);
 
     }
@@ -332,7 +335,7 @@ public class DashboardController {
                     ArrayList<Post> posts = new ArrayList<>();
                     posts.add(post1);
                     posts.add(post2);
-                    Main.getProfileController().setPosts(posts);
+                    //Main.getProfileController().setPosts(posts);
                 }else {
                     System.out.println("error");
                 }
@@ -361,12 +364,12 @@ public class DashboardController {
                 if(!hideDOB && toHide.getValue().equals("Age")){
                     //set boolean for hiding DOB for profile to true in database
                     System.out.println(hideDOB + " " + toHide.getValue());
-                    DOB.setVisible(false);
+                    //DOB.setVisible(false);
                     hideDOB = true;
                 }else if(hideDOB && toHide.getValue().equals("Age")){
                     //set boolean for hiding DOB for profile to false in database
                     System.out.println(hideDOB + " " + toHide.getValue());
-                    DOB.setVisible(true);
+                    //DOB.setVisible(true);
                     hideDOB = false;
                 }
 
