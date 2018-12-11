@@ -106,13 +106,12 @@ public class ProfileDao implements Dao<Profile> {
 
     @Override
     public void update(Profile profile, String[] params) {
-        Document profileDoc;
+        Document profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();;
 
         if(params[0].equals("friends")){
 
             Document friendsDoc;
             ArrayList<String> tempFriendArray;
-            profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
             friendsDoc = (Document) profileDoc.get("friends");
             tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
 
@@ -143,20 +142,22 @@ public class ProfileDao implements Dao<Profile> {
                 );
             }
         } else if(params[0].equals("posts")){
-            Document postDoc = new Document();
+            ArrayList<Document> postsDocArray = (ArrayList<Document>) profileDoc.get("posts");
+            Document postDoc;
 
             if (params[1].equals("add")){
+                postDoc = new Document();
                 LocalDate currentDate = LocalDate.now();
                 LocalTime currentTime = LocalTime.now();
 
                 postDoc.put("content", params[2]);
                 postDoc.put("date", currentDate);
                 postDoc.put("time", currentTime);
-
+                postsDocArray.add(postDoc);
 
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
-                        new Document("$set", new Document("posts", postDoc)));
+                        new Document("$set", new Document("posts", postsDocArray)));
 
             }
             if (params[1].equals("remove")){
