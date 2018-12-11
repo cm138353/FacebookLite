@@ -121,8 +121,11 @@ public class RegisterController {
 
                     profileDao.save(profile);
                     String[] temp = {"add", "kamran"};
-
                     profileDao.update(profile, temp);
+
+                    temp[0] = "remove";
+                    profileDao.update(profile, temp);
+
                     clear();
                     //back to login page to sign in
                     Main.getPrimaryStage().setScene(Main.getLoginPage());
