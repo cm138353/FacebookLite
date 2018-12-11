@@ -30,14 +30,14 @@
     <session id="311956533">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="247" />
-          <entry key="txt" value="40" />
+          <entry key="java" value="285" />
+          <entry key="txt" value="66" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="247" />
-          <entry key="PLAIN_TEXT" value="40" />
+          <entry key="JAVA" value="285" />
+          <entry key="PLAIN_TEXT" value="66" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -57,8 +57,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="169" column="81" lean-forward="true" selection-start-line="169" selection-start-column="81" selection-end-line="169" selection-end-column="81" />
+            <state relative-caret-position="477">
+              <caret line="190" column="84" lean-forward="true" selection-start-line="190" selection-start-column="84" selection-end-line="190" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#972#973#0" expanded="true" />
@@ -243,7 +243,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544492514650" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544492944724" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.mongoOptions" />
   </component>
@@ -443,17 +443,24 @@
       <option name="project" value="LOCAL" />
       <updated>1544491477033</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="profiledao update age">
+      <created>1544492552516</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1544492552516</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30227000" />
+    <option name="totallyTimeSpent" value="30656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20682302" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20682302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -463,7 +470,7 @@
       <window_info id="Learn" order="7" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.2494577" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.2494577" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39770868" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -530,7 +537,8 @@
     <MESSAGE value="profileDao.getAll() is created and done" />
     <MESSAGE value="clean up regcontroller" />
     <MESSAGE value="some comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="some comments" />
+    <MESSAGE value="profiledao update age" />
+    <option name="LAST_COMMIT_MESSAGE" value="profiledao update age" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -685,8 +693,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Daos/ProfileDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="169" column="81" lean-forward="true" selection-start-line="169" selection-start-column="81" selection-end-line="169" selection-end-column="81" />
+        <state relative-caret-position="477">
+          <caret line="190" column="84" lean-forward="true" selection-start-line="190" selection-start-column="84" selection-end-line="190" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#972#973#0" expanded="true" />
