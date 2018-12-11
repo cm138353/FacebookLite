@@ -110,11 +110,17 @@ public class DashboardController {
     private User user;
     private Profile profile;
 
+    private Document userDoc;
+    private Document profileDoc;
+
     @FXML
     void initialize() {
 
         userDao = new UserDao();
         profileDao = new ProfileDao();
+
+        userDoc = userDao.find(user.getEmail());
+        profileDoc = profileDao.find(userDoc.get("_id").toString());
 
         initializeProfile();
         initializePosts();
@@ -124,8 +130,6 @@ public class DashboardController {
 
     private void initializeProfile(){
         //get and set firstname, lastname,DOB, gender from database from email used to sign in
-        Document profileDoc = profileDao.find("temp");
-
         name.setText(profileDoc.get("name").toString());
         age.setText(profileDoc.get("age").toString());
         gender.setText(profileDoc.get("gender").toString());

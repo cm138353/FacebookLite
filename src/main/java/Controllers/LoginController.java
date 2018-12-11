@@ -60,17 +60,12 @@ public class LoginController {
         });
         logIn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                clear();
+                //clear();
                 //if tEmail and tPass are in the database;
                     //pass all the returned values for firstname, lastname, dob, status, gender, friendslist, and postslist to dashboardcontroller
-                    Main.getPrimaryStage().setScene(Main.getDashboardPage());
 
-                    Friend friend1 = new Friend("John@gmail.com", "Ken", "Yu","ken@gmail.com",false);
-                    Friend friend2 = new Friend("John@gmail.com", "Kevin", "Yu","kevin@gmail.com",false);
-                    ArrayList<Friend> friends = new ArrayList<>();
-                    friends.add(friend1);
-                    friends.add(friend2);
-                    Main.getDashboardController().setFriendsList(friends);
+                Main.getDashboardController().setUser(new User(tEmail, tPass));
+                Main.getPrimaryStage().setScene(Main.getDashboardPage());
 
                     //Main.getDashboardController().setPosts(posts);
             }

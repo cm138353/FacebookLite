@@ -53,8 +53,8 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public Document find(String s) {
-        Document doc = (Document) usersCollection.find(eq("email", s));
+    public Document find(String e) {
+        Document doc = (Document) usersCollection.find(eq("email", e));
         return doc;
     }
 

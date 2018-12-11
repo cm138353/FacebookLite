@@ -107,7 +107,7 @@ public class RegisterController {
 
                     // setting up profile info in profiles collection
                     ArrayList<String> pInfo = new ArrayList<>();
-                    Document doc = userDao.find(new User(mail,pass));
+                    Document doc = userDao.find(mail);
                     pInfo.add(fName);
                     pInfo.add(lName);
                     pInfo.add(age);
