@@ -5,9 +5,11 @@ import Classes.Profile;
 import com.mongodb.Block;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import org.bson.BsonArray;
 import org.bson.Document;
 import sample.DbManager;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -64,20 +66,46 @@ public class ProfileDao implements Dao<Profile> {
     @Override
     public void save(Profile profile) {
         Document profileDoc = new Document();
+        Document friendsDoc = new Document();
+        ArrayList<String> friendIdArray = new ArrayList<>();
+
         profileDoc.put("first", profile.getFirst());
         profileDoc.put("last", profile.getLast());
         profileDoc.put("age", profile.getAge());
         profileDoc.put("gender", profile.getGender());
         profileDoc.put("credId", profile.getCredId());
+
+        friendsDoc.put("list", friendIdArray);
+        friendsDoc.put("isHidden", false);
+        profileDoc.put("friends",  friendsDoc);
         profilesCollection.insertOne(profileDoc);
 
     }
 
     @Override
     public void update(Profile profile, String[] params) {
-        profilesCollection.updateOne(
-                eq("age", profile.getAge()),
-                new Document("$set", new Document("age", params[0])));
+        Document profileDoc;
+        Document friendsDoc;
+        ArrayList<String> tempFriendArray;
+        if (params[0].equals("add")){
+            profileDoc = (Document) profilesCollection.find(eq("credId", profile.getCredId())).first();
+            friendsDoc = (Document) profileDoc.get("friends");
+            tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
+            tempFriendArray.add(params[1]);
+            profilesCollection.updateOne(
+                    eq("credId", profile.getCredId()),
+                    new Document("$set", new Document("friends.list",tempFriendArray))
+            );
+        }
+        else if (params[0].equals("remove")){
+
+        }
+        else if (params[0].equals("hide")){
+
+        }
+
+
+
     }
 
     @Override

@@ -11,6 +11,7 @@ public class Profile {
     private String age;
     private String gender;
     private String credId;
+    private ArrayList<String> friends;
 
     public Profile(ArrayList<String> info){
         Iterator<String> itr = info.iterator();
@@ -20,7 +21,7 @@ public class Profile {
         this.age = itr.next();
         this.gender = itr.next();
         this.credId = itr.next();
-
+        this.friends = new ArrayList<>();
     }
 
     public String getFirst(){ return first; }

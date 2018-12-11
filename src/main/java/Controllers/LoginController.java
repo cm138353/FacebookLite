@@ -1,6 +1,8 @@
 package Controllers;
 
+import Classes.Profile;
 import Classes.User;
+import Daos.ProfileDao;
 import Daos.UserDao;
 import Interface.Dao;
 import javafx.beans.value.ChangeListener;
