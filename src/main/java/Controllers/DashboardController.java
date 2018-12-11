@@ -1,7 +1,7 @@
 package Controllers;
 
 import Classes.Friend;
-import Classes.Posts;
+import Classes.Post;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -51,7 +51,7 @@ public class DashboardController {
     private Button showHidPosts;
 
     @FXML
-    private ListView<Posts> posts;
+    private ListView<Post> posts;
 
     @FXML
     private Button addPost;
@@ -84,9 +84,9 @@ public class DashboardController {
     private Button logoutButton;
 
 
-    private ListView<Posts> hiddenPosts = new ListView<>();
+    private ListView<Post> hiddenPosts = new ListView<>();
 
-    private ListView<Posts> unhiddenPosts = new ListView<>();
+    private ListView<Post> unhiddenPosts = new ListView<>();
 
     private ListView<Friend> hiddenFriends = new ListView<>();
 
@@ -135,10 +135,10 @@ public class DashboardController {
         deletePost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList<Posts> postList;
+                ObservableList<Post> postList;
                 postList = posts.getSelectionModel().getSelectedItems();
 
-                for (Posts p: postList) {
+                for (Post p: postList) {
                     System.out.println(p.getID());
                     //remove posts from database by p.getID();
                 }
@@ -150,12 +150,12 @@ public class DashboardController {
         hidePost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ObservableList<Posts> postList;
+                ObservableList<Post> postList;
                 postList = posts.getSelectionModel().getSelectedItems();
                 //add hidden posts to hiddenpostslist
                 if(!showHiddenPosts) {
                     if (!postList.isEmpty()) {
-                        for (Posts p : postList) {
+                        for (Post p : postList) {
                             //db.getposts(p.getID).setHidden(true)
                             p.setHidden(true);
                             hiddenPosts.getItems().add(p);
@@ -168,7 +168,7 @@ public class DashboardController {
                     }
                 }else {
                     if (!postList.isEmpty()) {
-                        for (Posts p : postList) {
+                        for (Post p : postList) {
                             //db.getposts(p.getID).setHidden(false)
                             p.setHidden(false);
                             unhiddenPosts.getItems().add(p);
@@ -258,7 +258,7 @@ public class DashboardController {
             public void handle(ActionEvent event) {
                 if(!showHiddenPosts){
                     posts.setItems(hiddenPosts.getItems());
-                    showHidPosts.setText("See Posts");
+                    showHidPosts.setText("See Post");
                     hidePost.setText("Unhide");
                     addPost.setVisible(false);
                     showHiddenPosts = true;
@@ -315,9 +315,9 @@ public class DashboardController {
                     Main.getProfileController().setFriendsList(friends);
 
 
-                    Posts post1 = new Posts("hi there","12/10/2018",false);
-                    Posts post2 = new Posts("hey" ,"12/10/2018",false);
-                    ArrayList<Posts> posts = new ArrayList<>();
+                    Post post1 = new Post("hi there","12/10/2018",false);
+                    Post post2 = new Post("hey" ,"12/10/2018",false);
+                    ArrayList<Post> posts = new ArrayList<>();
                     posts.add(post1);
                     posts.add(post2);
                     Main.getProfileController().setPosts(posts);
@@ -394,10 +394,10 @@ public class DashboardController {
         this.status.setText(status);
     }
 
-    public void setPosts(List<Posts> posts) {
+    public void setPosts(List<Post> posts) {
         this.unhiddenPosts.getItems().clear();
         this.hiddenPosts.getItems().clear();
-        for(Posts post : posts) {
+        for(Post post : posts) {
             if (!post.getHidden()) {
                 this.unhiddenPosts.getItems().add(post);
             }
@@ -419,7 +419,7 @@ public class DashboardController {
         }
     }
 
-    public void addPost(Posts post){
+    public void addPost(Post post){
         posts.getItems().add(post);
     }
 }
