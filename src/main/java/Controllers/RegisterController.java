@@ -94,7 +94,7 @@ public class RegisterController {
                 String pass = password.getText();
                 String mail = email.getText();
                 String gen = gender.getValue();
-
+                System.out.println(age + " " + fName + " " + lName + " " + gen + " " + pass + " " + mail);
 
                 List<User> users = userDao.getAll();
                 Iterator<User> itr = users.iterator();

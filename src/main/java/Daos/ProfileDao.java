@@ -189,9 +189,24 @@ public class ProfileDao implements Dao<Profile> {
 
         } else if(params[0].equals("status")){
 
-            if (params[1].equals("update")){}
-            if (params[1].equals("hide")){}
-            if (params[1].equals("show")){}
+            if (params[1].equals("update")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("status.content", params[2]))
+                );
+            }
+            if (params[1].equals("hide")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("status.isHidden", true))
+                );
+            }
+            if (params[1].equals("show")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("status.isHidden", false))
+                );
+            }
 
         }
 
