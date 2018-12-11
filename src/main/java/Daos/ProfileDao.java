@@ -67,11 +67,16 @@ public class ProfileDao implements Dao<Profile> {
 
     @Override
     public void save(Profile profile) {
+
+        //create docs
         Document profileDoc = new Document();
         Document friendsDoc = new Document();
         Document statusDoc = new Document();
         Document postsDoc = new Document();
+
+        //friend list to manipulate
         ArrayList<String> friendIdArray = new ArrayList<>();
+
 
         profileDoc.put("first", profile.getFirst());
         profileDoc.put("last", profile.getLast());

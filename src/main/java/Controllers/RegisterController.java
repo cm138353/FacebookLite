@@ -119,14 +119,9 @@ public class RegisterController {
                     pInfo.add(gen);
                     pInfo.add(doc.get("_id").toString());
 
+                    //save profile
                     Profile profile = new Profile(pInfo);
-
                     profileDao.save(profile);
-                    String[] temp = {"add", "kamran"};
-                    profileDao.update(profile, temp);
-
-                    temp[0] = "remove";
-                    profileDao.update(profile, temp);
 
                     clear();
                     //back to login page to sign in
