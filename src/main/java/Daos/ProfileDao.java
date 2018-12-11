@@ -148,18 +148,20 @@ public class ProfileDao implements Dao<Profile> {
             Document postDoc = new Document();
 
             if (params[1].equals("add")){
-                LocalDate today = LocalDate.now();
+                LocalDate currentDate = LocalDate.now();
                 LocalTime currentTime = LocalTime.now();
 
                 postDoc.put("content", params[2]);
-                postDoc.put("date", today);
+                postDoc.put("date", currentDate);
                 postDoc.put("time", currentTime);
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
-                        new Document("$set", new Document("posts", )));
+                        new Document("$set", new Document("posts", postDoc)));
 
             }
-            if (params[1].equals("remove")){}
+            if (params[1].equals("remove")){
+
+            }
             if (params[1].equals("hide")){}
             if (params[1].equals("show")){}
 
