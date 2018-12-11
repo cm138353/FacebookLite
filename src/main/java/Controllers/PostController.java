@@ -1,9 +1,6 @@
 package Controllers;
 
-<<<<<<< Updated upstream
-=======
-//import Classes.Posts;
->>>>>>> Stashed changes
+
 import Classes.Post;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

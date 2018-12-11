@@ -123,8 +123,8 @@ public class DashboardController {
         profileDao = new ProfileDao();
         //
 
-        userDoc = userDao.find(user.getEmail());
-        profileDoc = profileDao.find(userDoc.get("_id").toString());
+        //userDoc = new userDao();//userDao.find(user.getEmail());
+        //profileDoc = profileDao.find(userDoc.get("_id").toString());
 
         initializeProfile();
         initializePosts();
