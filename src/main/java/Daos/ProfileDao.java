@@ -134,6 +134,12 @@ public class ProfileDao implements Dao<Profile> {
                         new Document("$set", new Document("friends.isHidden", false))
                 );
             }
+        } else if(params[0].equals("posts")){
+
+        } else if(params[0].equals("age")){
+
+        } else if(params[0].equals("status")){
+
         }
 
 
