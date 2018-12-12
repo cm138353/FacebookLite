@@ -22,6 +22,7 @@ import org.bson.Document;
 import sample.Main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -110,6 +111,10 @@ public class DashboardController {
 
     private Boolean hideStatus = false;
 
+    private Profile profile = new Profile();
+
+    private String email;
+
     @FXML
     void initialize() {
         userDao = new UserDao();
@@ -121,12 +126,6 @@ public class DashboardController {
     }
 
     private void initializeProfile(){
-        //get and set firstname, lastname,DOB, gender from database from email used to sign in
-        /*firstName.setText("Kenny");
-        lastName.setText("Sam");
-        DOB.setText("08/30/1997");
-        gender.setText("Male");
-        status.setText("status here");*/
         status.setEditable(false);
 
     }
@@ -151,8 +150,9 @@ public class DashboardController {
                 postList = posts.getSelectionModel().getSelectedItems();
 
                 for (Posts p: postList) {
-                    System.out.println(p.getID());
-                    //remove posts from database by p.getID();
+                    //new
+                    String postItem = p.getContent() + ", " + p.getDateAdded();
+                    profileDao.update(profile,new String[]{"posts","remove",postItem});
                 }
                 //remove posts from postlist
                 posts.getItems().removeAll(postList);
@@ -162,12 +162,13 @@ public class DashboardController {
         hidePost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
-                if(!hidePostsBool) {
+                //new
+                if(!profile.getHidePosts()) {
                     for (Posts p : unhiddenPosts.getItems()) {
                         hiddenPosts.getItems().add(p);
                         System.out.println(p.toString() + " is hidden");
                     }
+                    profileDao.update(profile,new String[]{"posts","hide"});
                     //remove hidden posts from postlist
                     posts.getItems().clear();
                 }else {
@@ -175,6 +176,7 @@ public class DashboardController {
                         unhiddenPosts.getItems().add(p);
                         System.out.println(p.toString() + " is unhidden");
                     }
+                    profileDao.update(profile,new String[]{"posts","show"});
                     //remove unhidden posts from postlist
                     posts.getItems().clear();
                 }
@@ -184,6 +186,7 @@ public class DashboardController {
         addPost.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Main.getPostController().setProfile(profile);
                 Main.getPrimaryStage().setScene(Main.getAddPostPage());
             }
         });
@@ -196,7 +199,9 @@ public class DashboardController {
 
                 for (Friend f: removedFriends) {
                     System.out.println(f.getFriendEmail());
-                    //remove friends from friends table by f.getEmail();
+                    //new
+                    profileDao.update(profile,new String[]{"friends","remove",f.getProfileEmail() + ", " +
+                                        f.getFriendFirstName() + ", " + f.getFriendLastName() + ", " + f.getFriendEmail()});
                 }
                 //remove friends from friendslist
                 friendsList.getItems().removeAll(removedFriends);
@@ -205,18 +210,22 @@ public class DashboardController {
         hideFriends.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
-                if(!hideFriendsBool){
+                //new
+                if(!profile.getHideFriends()){
                     for (Friend f : unhiddenFriends.getItems()) {
                         hiddenFriends.getItems().add(f);
                         System.out.println(f.toString() + " is hidden");
                     }
+                    //new
+                    profileDao.update(profile,new String[]{"friends","hide"});
                     friendsList.getItems().clear();
                 }else {
                     for (Friend f : hiddenFriends.getItems()) {
                         unhiddenFriends.getItems().add(f);
                         System.out.println(f.toString() + " is unhidden");
                     }
+                    //new
+                    profileDao.update(profile,new String[]{"friends","show"});
                     friendsList.getItems().clear();
                 }
             }
@@ -227,11 +236,14 @@ public class DashboardController {
                 status.setEditable(true);
             }
         });
-
+        //new
         updateStatus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 //save status to database
+                String text = status.getText();
+                //new
+                profileDao.update(profile,new String[]{"status","update",text});
                 status.setEditable(false);
             }
         });
@@ -280,8 +292,8 @@ public class DashboardController {
                 ObservableList<Friend> selectedFriends;
                 selectedFriends = friendsList.getSelectionModel().getSelectedItems();
 
-                Friend friend1 = new Friend("Jim@gmail.com", "Earl", "Yu","Michael@gmail.com",false);
-                Friend friend2 = new Friend("Jim@gmail.com", "Michael", "Yu","kyle@gmail.com",false);
+                Friend friend1 = new Friend("Jim@gmail.com", "Earl", "Yu","Michael@gmail.com");
+                Friend friend2 = new Friend("Jim@gmail.com", "Michael", "Yu","kyle@gmail.com");
                 ArrayList<Friend> friends = new ArrayList<>();
                 friends.add(friend1);
                 friends.add(friend2);
@@ -311,11 +323,12 @@ public class DashboardController {
                                         Main.getProfileController().setHideStatus(profile.getHideStatus());
                                         Main.getProfileController().setHideFriendsBool(profile.getHideFriends());
                                         Main.getProfileController().setHideDOB(profile.getHideAge());
+                                        Main.getProfileController().setHidePostsBool(profile.getHidePosts());
                                         Main.getProfileController().setFirstName(profile.getFirst());
                                         Main.getProfileController().setLastName(profile.getLast());
-                                        Main.getProfileController().setFriendsList(friends);
                                         Main.getProfileController().setStatus(profile.getStatusContent());
                                         Main.getProfileController().setPosts(profile.getPostsList());
+                                        Main.getProfileController().setFriendsList(profile.getFriendsList());
                                         Main.getProfileController().setGender(profile.getGender());
                                         Main.getProfileController().setDOB(profile.getAge());
                                         break;
@@ -325,26 +338,6 @@ public class DashboardController {
                             }
                         }
                     }
-                    //get DOB, gender ,friendslist, posts, and status from database using selectedFriends.get(0).getProfileEmail();
-                    /*Main.getProfileController().setDOB("08/20/1920");
-                    Main.getProfileController().setGender("Male");
-                    Main.getProfileController().setStatus("Doing nothing");
-
-                    Friend friend1 = new Friend("Jim@gmail.com", "Earl", "Yu","Michael@gmail.com",false);
-                    Friend friend2 = new Friend("Jim@gmail.com", "Michael", "Yu","kyle@gmail.com",false);
-                    ArrayList<Friend> friends = new ArrayList<>();
-                    friends.add(friend1);
-                    friends.add(friend2);
-                    Main.getProfileController().setFriendsList(friends);
-
-
-                    Posts post1 = new Posts("hi there","12/10/2018",false);
-                    Posts post2 = new Posts("hey" ,"12/10/2018",false);
-                    ArrayList<Posts> posts = new ArrayList<>();
-                    posts.add(post1);
-                    posts.add(post2);
-                    Main.getProfileController().setPosts(posts);*/
-
                 }else {
                     System.out.println("error");
                 }
@@ -361,6 +354,7 @@ public class DashboardController {
         editProfile.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Main.getUpdateProfileController().setProfile(profile);
                 Main.getPrimaryStage().setScene(Main.getUpdateProfPage());
             }
         });
@@ -370,31 +364,52 @@ public class DashboardController {
             public void handle(ActionEvent event) {
                 //replace hideDOB and hideStatus with the value returned from the database that says to hide the DOB or Status
                 System.out.println(toHide.getValue());
-                if(!hideDOB && toHide.getValue().equals("Age")){
+                if(!profile.getHideAge() && toHide.getValue().equals("Age")){
                     //set boolean for hiding DOB for profile to true in database
                     System.out.println(hideDOB + " " + toHide.getValue());
                     DOB.setVisible(false);
-                    hideDOB = true;
-                }else if(hideDOB && toHide.getValue().equals("Age")){
+                    //new
+                    profileDao.update(profile,new String[]{"age","hide"});
+                    profile.setHideAge(true);
+                    //hideDOB = true;
+                }else if(profile.getHideAge() && toHide.getValue().equals("Age")){
                     //set boolean for hiding DOB for profile to false in database
                     System.out.println(hideDOB + " " + toHide.getValue());
                     DOB.setVisible(true);
-                    hideDOB = false;
+                    //new
+                    profileDao.update(profile,new String[]{"age","show"});
+                    profile.setHideAge(false);
+                    //hideDOB = false;
                 }
 
-                if(!hideStatus && toHide.getValue().equals("Status")){
+                if(!profile.getHideStatus() && toHide.getValue().equals("Status")){
                     //set bool for hiding status for profile to true
                     System.out.println(hideStatus + " " + toHide.getValue());
                     status.setVisible(false);
                     updateStatus.setVisible(false);
-                    hideStatus = true;
-                }else if (hideStatus && toHide.getValue().equals("Status")){
+                    //new
+                    profileDao.update(profile,new String[]{"status","hide"});
+                    profile.setHideAge(false);
+                    //hideStatus = true;
+                }else if (profile.getHideStatus() && toHide.getValue().equals("Status")){
                     //set bool for hiding status for profile to false
                     System.out.println(hideStatus + " " + toHide.getValue());
                     status.setVisible(true);
                     updateStatus.setVisible(true);
-                    hideStatus = false;
+                    //new
+                    profileDao.update(profile,new String[]{"status","show"});
+                    profile.setHideAge(true);
+                    //hideStatus = false;
                 }
+            }
+        });
+
+        addFriends.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Main.getAddFriendController().setProfile(profile);
+                //Main.getAddFriendController().setFriendsList(profile.getFriendsList());
+                Main.getPrimaryStage().setScene(Main.getAddFriendPage());
             }
         });
     }
@@ -427,11 +442,14 @@ public class DashboardController {
         }
     }
 
-    public void setPosts(List<Posts> posts) {
+    public void setPosts(List<String> posts) {
         this.unhiddenPosts.getItems().clear();
         this.hiddenPosts.getItems().clear();
-        for(Posts post : posts) {
+        //creates post list from list of strings
+        List <Posts> postList = makePostsList(posts);
+        for(Posts post : postList) {
             if (!hidePostsBool) {
+
                 this.unhiddenPosts.getItems().add(post);
             }
             else {
@@ -441,10 +459,11 @@ public class DashboardController {
         }
     }
 
-    public void setFriendsList(List<Friend> friendsList) {
+    public void setFriendsList(List<String> friendsList) {
         this.hiddenFriends.getItems().clear();
         this.unhiddenFriends.getItems().clear();
-        for(Friend friend: friendsList){
+        List<Friend> friendList = makeFriendsList(friendsList);
+        for(Friend friend: friendList){
             if(!hideFriendsBool) {
                 this.unhiddenFriends.getItems().add(friend);
             }else {
@@ -456,6 +475,10 @@ public class DashboardController {
 
     public void addPost(Posts post){
         posts.getItems().add(post);
+    }
+
+    public void addFriend(Friend friend){
+        friendsList.getItems().add(friend);
     }
 
     public void setHidePosts(Boolean hidePostsBool){
@@ -472,5 +495,44 @@ public class DashboardController {
 
     public void setHideAge(Boolean hideDOB){
         this.hideDOB = hideDOB;
+    }
+
+    private List<Posts> makePostsList(List <String> posts){
+
+        List<Posts> postsList = new ArrayList<>();
+
+        //{content, DateAdded}
+        for(String post : posts){
+            List<String> items = Arrays.asList(post.split("\\s*,\\s*"));
+            Posts newPost = new Posts(items.get(0),items.get(1));
+            postsList.add(newPost);
+        }
+
+        return postsList;
+
+    }
+
+    private List<Friend> makeFriendsList(List <String> friends){
+
+        List<Friend> friendsList = new ArrayList<>();
+
+        //"John@gmail.com, Ken, Yu, ken@gmail.com"
+        for(String friend : friends){
+            List<String> items = Arrays.asList(friend.split("\\s*,\\s*"));
+            //System.out.println(items.get(3));
+            Friend newFriend = new Friend(items.get(0),items.get(1),items.get(2),items.get(3));
+            friendsList.add(newFriend);
+        }
+
+        return friendsList;
+
+    }
+
+    public void setProfile(Profile profile){
+        this.profile = profile;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
     }
 }

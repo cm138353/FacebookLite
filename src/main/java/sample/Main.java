@@ -2,6 +2,7 @@ package sample;
 
 import Classes.Profile;
 import Classes.User;
+import Controllers.AddFriendController;
 import Controllers.DashboardController;
 import Controllers.ForgotController;
 import Controllers.LoginController;
@@ -10,14 +11,21 @@ import Controllers.ProfileController;
 import Controllers.RegisterController;
 import Controllers.ResetController;
 import Controllers.UpdateProfileController;
+import Daos.ProfileDao;
+import Daos.UserDao;
+import Interface.Dao;
 import com.mongodb.client.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.bson.Document;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class Main extends Application {
 
@@ -34,6 +42,7 @@ public class Main extends Application {
     private static Scene profilePage;
     private static Scene addPostPage;
     private static Scene updateProfPage;
+    private static Scene addFriendPage;
     private static LoginController loginController;
     private static ForgotController forgotController;
     private static DashboardController dashboardController;
@@ -42,6 +51,10 @@ public class Main extends Application {
     private static ProfileController profileController;
     private static PostController postController;
     private static UpdateProfileController updateProfileController;
+    private static AddFriendController addFriendController;
+
+    private static Dao userDao;
+    private static Dao profileDao;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -57,6 +70,19 @@ public class Main extends Application {
 
 
         primaryStage.show();
+
+        /*String s = "kennysam21@yahoo.com, Jim, Yu, jim@gmail.com";
+        List<String> items = Arrays.asList(s.split("\\s*,\\s*"));
+
+        for (String item : items){
+            System.out.println(item);
+        }*/
+
+        /*userDao = new UserDao();
+        profileDao = new ProfileDao();
+        printAll();*/
+
+
 
 
     }
@@ -97,6 +123,10 @@ public class Main extends Application {
         return updateProfPage;
     }
 
+    public static Scene getAddFriendPage() {
+        return addFriendPage;
+    }
+
     public static ProfileController getProfileController(){
         return profileController;
     }
@@ -129,6 +159,10 @@ public class Main extends Application {
         return updateProfileController;
     }
 
+    public static AddFriendController getAddFriendController() {
+        return addFriendController;
+    }
+
     private void loadPages() throws IOException {
         /*login = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("LoginPage.fxml")));
         forgotPass = new Scene((Parent)FXMLLoader.load(getClass().getClassLoader().getResource("ForgotPassword.fxml")));
@@ -151,6 +185,8 @@ public class Main extends Application {
         postController = loader.getController();
         updateProfPage = new Scene(getScene("UpdateProfile.fxml"));
         updateProfileController = loader.getController();
+        addFriendPage = new Scene(getScene("AddFriend.fxml"));
+        addFriendController = loader.getController();
     }
 
     private Parent getScene(String fxml) throws IOException {
@@ -161,5 +197,34 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void printAll(){
+        List<User> users = userDao.getAll();
+        Iterator<User> itr = users.iterator();
+        while(itr.hasNext()) {
+            User user = itr.next();
+            //printing all emails and passwords in user database
+            System.out.println(user.getEmail() + " " + user.getPassword());
+            Document doc = (Document) userDao.find(user.getEmail());
+            if(doc != null) {
+                //gets user id
+                String id = doc.get("_id").toString();
+                //gets all profiles
+                List<Profile> profiles = profileDao.getAll();
+                Iterator<Profile> itr2 = profiles.iterator();
+                while (itr2.hasNext()) {
+                    Profile profile = itr2.next();
+                    //System.out.println(profile.toString());
+                    //System.out.println(profile.getCredId() + " " + id);
+                    if (profile.getCredId().equals(id)) {
+
+                        //profileDao.update(profile, new String[]{"posts","show"});
+                        System.out.println(profile.getFriendsList().get(0));
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

@@ -7,13 +7,11 @@ public class Posts {
     private int id;
     private String content;
     private String dateAdded;
-    private Boolean hidden;
 
-    public Posts(String post, String dateAdded, boolean hidden){
+    public Posts(String post, String dateAdded){
         this.id = ThreadLocalRandom.current().nextInt(1, 1000);
         this.content = post;
         this.dateAdded = dateAdded;
-        this.hidden = hidden;
     }
 
     @Override
@@ -27,12 +25,7 @@ public class Posts {
 
     public String getContent() { return  content;}
 
-    public void setHidden(boolean hidden){
-        this.hidden = hidden;
+    public String getDateAdded() {
+        return dateAdded;
     }
-
-    public Boolean getHidden(){
-        return this.hidden;
-    }
-
 }

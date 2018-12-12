@@ -1,4 +1,4 @@
-package Daos;
+/*package Daos;
 
 import Classes.Posts;
 import Interface.Dao;
@@ -44,4 +44,4 @@ public class PostsDao implements Dao<Posts> {
     public void delete(Posts post) {
 
     }
-}
+}*/

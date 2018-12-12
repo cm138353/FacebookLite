@@ -16,8 +16,8 @@ public class Profile {
     private Boolean hideFriends = false;
     private Boolean hidePosts = false;
     private String statusContent = "";
-    private ArrayList<Posts> postsList = new ArrayList<>();
-    private ArrayList<Friend> friendsList = new ArrayList<>();
+    private ArrayList<String> postsList = new ArrayList<>();
+    private ArrayList<String> friendsList = new ArrayList<>();
 
     public Profile(ArrayList<String> info){
         Iterator<String> itr = info.iterator();
@@ -93,19 +93,19 @@ public class Profile {
         this.hidePosts = hidePosts;
     }
 
-    public ArrayList<Friend> getFriendsList() {
+    public ArrayList<String> getFriendsList() {
         return friendsList;
     }
 
-    public void setFriendsList(ArrayList<Friend> friendsList) {
+    public void setFriendsList(ArrayList<String> friendsList) {
         this.friendsList = friendsList;
     }
 
-    public ArrayList<Posts> getPostsList() {
+    public ArrayList<String> getPostsList() {
         return postsList;
     }
 
-    public void setPostsList(ArrayList<Posts> postsList) {
+    public void setPostsList(ArrayList<String> postsList) {
         this.postsList = postsList;
     }
 

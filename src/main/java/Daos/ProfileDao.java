@@ -32,7 +32,7 @@ public class ProfileDao implements Dao<Profile> {
 
     }
 
-    @Override
+    /*@Override
     public List<Profile> getAll() {
         List<Profile> profiles = new ArrayList<>();
         ArrayList<Document> profilesDoc = new ArrayList<>();
@@ -47,18 +47,6 @@ public class ProfileDao implements Dao<Profile> {
         Iterator<Document> itr = profilesDoc.iterator();
         while(itr.hasNext()){
             Document doc = itr.next();
-            /*ArrayList<String> profInfo = new ArrayList<>();
-            profInfo.add(doc.getString("first"));
-            //System.out.println(doc.getString("first") + " lol");
-            profInfo.add(doc.getString("last"));
-            Document rand = (Document)doc.get("age");
-            //System.out.println(rand.get("isHidden").toString());
-            profInfo.add(rand.get("age").toString());
-            //profInfo.add(rand.get("isHidden").toString());
-            profInfo.add(doc.getString("gender"));
-            profInfo.add(doc.get("credId").toString());
-
-            profiles.add(new Profile(profInfo));*/
             Profile profile = new Profile();
             Document rand;
             profile.setFirst(doc.getString("first"));
@@ -81,15 +69,57 @@ public class ProfileDao implements Dao<Profile> {
 
 
         return profiles;
-    }
+    }*/
+    //good
+    @Override
+    public List<Profile> getAll() {
+        List<Profile> profiles = new ArrayList<>();
+        ArrayList<Document> profilesDoc = new ArrayList<>();
 
+        Block<Document> storeBlock = new Block<Document>() {
+            @Override
+            public void apply(final Document document) {
+                profilesDoc.add(document);
+            }
+        };
+        profilesCollection.find().forEach(storeBlock);
+        Iterator<Document> itr = profilesDoc.iterator();
+        while(itr.hasNext()){
+            Document doc = itr.next();
+            Profile profile = new Profile();
+            ArrayList<String> profInfo = new ArrayList<>();
+            Document rand;
+            profile.setFirst(doc.getString("first"));
+            profile.setLast(doc.getString("last"));
+            rand = (Document)doc.get("age");
+            profile.setAge(rand.getString("age"));
+            profile.setHideAge(rand.getBoolean("isHidden"));
+            profile.setGender(doc.getString("gender"));
+            profile.setCredId(doc.getString("credId"));
+            rand = (Document)doc.get("friends");
+            profile.setFriendsList((ArrayList<String>) rand.get("list"));
+            profile.setHideFriends(rand.getBoolean("isHidden"));
+            rand = (Document)doc.get("status");
+            profile.setStatusContent(rand.getString("content"));
+            profile.setHideStatus(rand.getBoolean("isHidden"));
+            profile.setPostsList((ArrayList <String>)doc.get("posts"));
+            profile.setHidePosts(doc.getBoolean("isPostsHidden"));
+
+
+            profiles.add(profile);
+        }
+
+
+        return profiles;
+    }
+    //good
     @Override
     public Document find(String credID) {
         Document doc = (Document) profilesCollection.find(eq("credId", credID));
         return doc;
     }
 
-
+    //good
     @Override
     public void save(Profile profile) {
 
@@ -143,7 +173,10 @@ public class ProfileDao implements Dao<Profile> {
             friendsDoc = (Document) profileDoc.get("friends");
             tempFriendArray = (ArrayList<String>) friendsDoc.get("list");
 
+            //profileDao.update(profile1, new String[]{"friends", "add","kennysam21@yahoo.com, Jim, Yu, jim@gmail.com"});
+            //good
             if (params[1].equals("add")){
+                System.out.println(params[2]);
                 tempFriendArray.add(params[2]);
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
@@ -151,7 +184,14 @@ public class ProfileDao implements Dao<Profile> {
                 );
             }
             else if (params[1].equals("remove")){
-                tempFriendArray.remove(params[2]);
+                Iterator<String> friends = tempFriendArray.iterator();
+                while (friends.hasNext()) {
+                    String friend = friends.next();
+                    if (params[2].equals(friend)) {
+                        tempFriendArray.remove(friend);
+                        break;
+                    }
+                }
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
                         new Document("$set", new Document("friends.list", tempFriendArray))
@@ -169,47 +209,51 @@ public class ProfileDao implements Dao<Profile> {
                         new Document("$set", new Document("friends.isHidden", false))
                 );
             }
+            //good
         } else if(params[0].equals("posts")){
-            ArrayList<Document> postsDocArray = (ArrayList<Document>) profileDoc.get("posts");
-            Document postDoc;
-
+            ArrayList<String> postsDocArray = (ArrayList<String>) profileDoc.get("posts");
+            //works
             if (params[1].equals("add")){
-                postDoc = new Document();
-                LocalDate currentDate = LocalDate.now();
-                LocalTime currentTime = LocalTime.now();
-
-                postDoc.put("content", params[2]);
-                postDoc.put("date", currentDate);
-                postDoc.put("time", currentTime);
-                postsDocArray.add(postDoc);
-
-
+                postsDocArray.add(params[2]);
+                //System.out.println(params[2]);
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
                         new Document("$set", new Document("posts", postsDocArray)));
 
             }
+            //works
             if (params[1].equals("remove")){
 
-                postDoc = postsDocArray.get(Integer.valueOf(params[2]));
-                postsDocArray.remove(postDoc);
+                //postDoc = postsDocArray.get(Integer.valueOf(params[2]));
+                //remove first instance
+                Iterator<String> posts = postsDocArray.iterator();
+                while (posts.hasNext()) {
+                    String post = posts.next();
+                    if(params[2].equals(post)){
+                        postsDocArray.remove(post);
+                        System.out.println(post + " was deleted");
+                        break;
+                    }
+                }
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
                         new Document("$set", new Document("posts", postsDocArray)));
             }
+            //works
             if (params[1].equals("hide")){
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
                         new Document("$set", new Document("isPostsHidden", true)));
             }
+            //works
             if (params[1].equals("show")){
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
                         new Document("$set", new Document("isPostsHidden", false)));
             }
-
+            //good
         } else if(params[0].equals("age")){
-
+            //works
             if (params[1].equals("update")){
                 profilesCollection.updateOne(
                         eq("credId", profile.getCredId()),
@@ -228,7 +272,7 @@ public class ProfileDao implements Dao<Profile> {
                         new Document("$set", new Document("age.isHidden", false))
                 );
             }
-
+            //good
         } else if(params[0].equals("status")){
 
             if (params[1].equals("update")){
@@ -250,11 +294,26 @@ public class ProfileDao implements Dao<Profile> {
                 );
             }
 
+        } else if(params[0].equals("gender")){
+            if (params[1].equals("update")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("gender", params[2])));
+                //System.out.println(params[2]);
+            }
+        } else if(params[0].equals("first")){
+            if (params[1].equals("update")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("first", params[2])));
+            }
+        }else if(params[0].equals("last")){
+            if (params[1].equals("update")){
+                profilesCollection.updateOne(
+                        eq("credId", profile.getCredId()),
+                        new Document("$set", new Document("last", params[2])));
+            }
         }
-
-
-
-
 
     }
 

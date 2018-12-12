@@ -20,6 +20,7 @@ import org.bson.Document;
 import sample.Main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -146,8 +147,8 @@ public class ProfileController {
                                         setLastName(profile.getLast());
                                         setStatus("lmao");
                                         setDOB("10/12/1994");
-                                        setPosts(profile.getPostsList());
-                                        setFriendsList(profile.getFriendsList());
+                                        //setPosts(profile.getPostsList());
+                                        //setFriendsList(profile.getFriendsList());
                                         break;
                                     }
                                 }
@@ -193,17 +194,19 @@ public class ProfileController {
             this.status.setVisible(false);
     }
 
-    public void setPosts(List<Posts> posts) {
+    public void setPosts(List<String> posts) {
         this.posts.getItems().clear();
-        for(Posts post : posts) {
+        List <Posts> postList = makePostsList(posts);
+        for(Posts post : postList) {
             if(!hidePostsBool)
                 this.posts.getItems().add(post);
         }
     }
 
-    public void setFriendsList(List<Friend> friendsList) {
+    public void setFriendsList(List<String> friendsList) {
         this.friendsList.getItems().clear();
-        for(Friend friend: friendsList){
+        List<Friend> friendList = makeFriendsList(friendsList);
+        for(Friend friend: friendList){
             if(!hideFriendsBool)
                 this.friendsList.getItems().add(friend);
         }
@@ -223,5 +226,36 @@ public class ProfileController {
 
     public void setHidePostsBool(Boolean hidePostsBool) {
         this.hidePostsBool = hidePostsBool;
+    }
+
+    private List<Posts> makePostsList(List <String> posts){
+
+        List<Posts> postsList = new ArrayList<>();
+
+        //{content, DateAdded}
+        for(String post : posts){
+            List<String> items = Arrays.asList(post.split("\\s*,\\s*"));
+            Posts newPost = new Posts(items.get(0),items.get(1));
+            postsList.add(newPost);
+        }
+
+        return postsList;
+
+    }
+
+    private List<Friend> makeFriendsList(List <String> friends){
+
+        List<Friend> friendsList = new ArrayList<>();
+
+        //"John@gmail.com, Ken, Yu, ken@gmail.com"
+        for(String friend : friends){
+            List<String> items = Arrays.asList(friend.split("\\s*,\\s*"));
+            //System.out.println(items.get(3));
+            Friend newFriend = new Friend(items.get(0),items.get(1),items.get(2),items.get(3));
+            friendsList.add(newFriend);
+        }
+
+        return friendsList;
+
     }
 }

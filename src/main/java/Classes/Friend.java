@@ -6,14 +6,12 @@ public class Friend {
     private String friendFirstName;
     private String friendLastName;
     private String friendEmail;
-    private Boolean hidden;
 
-    public Friend(String pEmail, String fFirstName, String fLastName, String fEmail, Boolean hidden){
+    public Friend(String pEmail, String fFirstName, String fLastName, String fEmail){
         this.profileEmail = pEmail;
         this.friendFirstName = fFirstName;
         this.friendLastName = fLastName;
         this.friendEmail = fEmail;
-        this.hidden = hidden;
     }
 
     public void setFriendFirstName(String friendFirstName) {
@@ -32,9 +30,6 @@ public class Friend {
         this.friendEmail = friendEmail;
     }
 
-    public void setHidden(Boolean hidden) {
-        this.hidden = hidden;
-    }
 
     public String getFriendFirstName() {
         return friendFirstName;
@@ -50,10 +45,6 @@ public class Friend {
 
     public String getProfileEmail() {
         return profileEmail;
-    }
-
-    public Boolean getHidden() {
-        return hidden;
     }
 
     @Override

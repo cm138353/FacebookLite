@@ -72,28 +72,28 @@ public class LoginController {
         });
         logIn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                Friend friend1 = new Friend("John@gmail.com", "Ken", "Yu","ken@gmail.com",false);
-                Friend friend2 = new Friend("John@gmail.com", "Kevin", "Yu","kevin@gmail.com",false);
+                /*Friend friend1 = new Friend("John@gmail.com", "Ken", "Yu","ken@gmail.com");
+                Friend friend2 = new Friend("John@gmail.com", "Kevin", "Yu","kevin@gmail.com");
                 ArrayList<Friend> friends = new ArrayList<>();
                 friends.add(friend1);
                 friends.add(friend2);
 
 
-                Posts post1 = new Posts("whats up dude","12/10/2018",false);
-                Posts post2 = new Posts("hey" ,"12/10/2018",false);
+                Posts post1 = new Posts("whats up dude","12/10/2018");
+                Posts post2 = new Posts("hey" ,"12/10/2018");
                 ArrayList<Posts> posts = new ArrayList<>();
                 posts.add(post1);
-                posts.add(post2);
+                posts.add(post2);*/
 
 
                 List<User> users = userDao.getAll();
                 Iterator<User> itr = users.iterator();
-                User foundUser = new User("","");
+                //User foundUser = new User("","");
                 System.out.println(tEmail + " | " + tPass + "\n");
                 while(itr.hasNext()) {
                     User user = itr.next();
                     Document doc = (Document) userDao.find(tEmail);
-                    System.out.println(doc.toString());
+                    //System.out.println(doc.toString());
                     if(doc != null) {
                         System.out.println(doc.toString());
 
@@ -106,20 +106,25 @@ public class LoginController {
                             while (itr2.hasNext()){
                                 Profile profile = itr2.next();
                                 System.out.println(profile.toString());
-                                System.out.println(profile.getCredId() + " " + id);
+                                System.out.println(profile.getCredId() + " = " + id);
                                 if(profile.getCredId().equals(id)){
                                     System.out.println("equal id");
+                                    Main.getDashboardController().setProfile(profile);
                                     Main.getDashboardController().setHidePosts(profile.getHidePosts());
                                     Main.getDashboardController().setHideStatus(profile.getHideStatus());
                                     Main.getDashboardController().setHideFriends(profile.getHideFriends());
                                     Main.getDashboardController().setHideAge(profile.getHideAge());
-                                    Main.getDashboardController().setFriendsList(friends);
-                                    Main.getDashboardController().setPosts(posts);
+                                    //changed
+                                    Main.getDashboardController().setFriendsList(profile.getFriendsList());
+                                    //changed
+                                    Main.getDashboardController().setPosts(profile.getPostsList());
                                     Main.getDashboardController().setStatus(profile.getStatusContent());
                                     Main.getDashboardController().setFirstName(profile.getFirst());
                                     Main.getDashboardController().setLastName(profile.getLast());
                                     Main.getDashboardController().setGender(profile.getGender());
                                     Main.getDashboardController().setDOB(profile.getAge());
+                                    //new
+                                    Main.getDashboardController().setEmail(doc.get("email").toString());
                                     Main.getPrimaryStage().setScene(Main.getDashboardPage());
                                     break;
                                 }
