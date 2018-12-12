@@ -429,14 +429,14 @@ public class DashboardController {
 
     public void setDOB(String DOB){
         this.DOB.setText(DOB);
-        if(hideDOB) {
+        if(profile.getHideAge()) {
             this.DOB.setVisible(false);
         }
     }
 
     public void setStatus(String status){
         this.status.setText(status);
-        if(hideStatus){
+        if(profile.getHideStatus()){
             this.status.setVisible(false);
             this.updateStatus.setVisible(false);
         }
@@ -448,7 +448,7 @@ public class DashboardController {
         //creates post list from list of strings
         List <Posts> postList = makePostsList(posts);
         for(Posts post : postList) {
-            if (!hidePostsBool) {
+            if (!profile.getHidePosts()) {
 
                 this.unhiddenPosts.getItems().add(post);
             }
@@ -464,7 +464,7 @@ public class DashboardController {
         this.unhiddenFriends.getItems().clear();
         List<Friend> friendList = makeFriendsList(friendsList);
         for(Friend friend: friendList){
-            if(!hideFriendsBool) {
+            if(!profile.getHideFriends()) {
                 this.unhiddenFriends.getItems().add(friend);
             }else {
                 this.hiddenFriends.getItems().add(friend);

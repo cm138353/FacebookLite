@@ -57,7 +57,7 @@ public class AddFriendController {
                     //new
                     profileDao.update(profile,new String[]{"friends","add", selectedFriends.get(0).getProfileEmail() + ", " + selectedFriends.get(0).getFriendFirstName()
                     + ", " + selectedFriends.get(0).getFriendLastName() + ", " + selectedFriends.get(0).getFriendEmail()});
-                    allUsers.getItems().remove(selectedFriends.get(0));
+                    //allUsers.getItems().remove(selectedFriends.get(0));
                     Main.getPrimaryStage().setScene(Main.getDashboardPage());
                 }
             }
