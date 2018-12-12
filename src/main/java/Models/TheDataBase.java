@@ -10,12 +10,12 @@ import java.util.*;
 
 public class TheDataBase {
 
-    public UserDao userData;
-    public ProfileDao profileData;
+    private UserDao userData;
+    private ProfileDao profileData;
 
-    public User failedUser = new User( "Null", "Null");
-    public Profile failedProfile = new Profile("Null", "Null", -99, "Null", "Null");
-    public Friend failedfriend = new Friend("Null", "Null", "Null", "Null",  false);
+    public final User failedUser = new User( "Null", "Null");
+    public final Profile failedProfile = new Profile("Null", "Null", -99, "Null", "Null");
+    public final Friend failedfriend = new Friend("Null", "Null", "Null", "Null",  false);
 
     public TheDataBase(){
         userData = new UserDao();
@@ -81,7 +81,7 @@ public class TheDataBase {
     }
 
     public void setUser(User user){
-        //TODO
+        userData.save(new User("a", "a", "a", "a"));
     }
 
 
